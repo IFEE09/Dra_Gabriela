@@ -142,28 +142,98 @@ a {
     transform: translateY(-2px);
 }
 
-/* Floating WhatsApp Button */
-.whatsapp-float {
+/* Floating Buttons */
+.floating-buttons {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    border-radius: 50%;
+    display: flex;
+    flex-direction: row !important;
+    /* Force side-by-side */
+    align-items: flex-end;
+    /* Align bottom */
+    gap: 15px;
+    z-index: 1000;
+}
+
+.float-btn {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     color: white;
-    font-size: 28px;
-    box-shadow: var(--shadow-lg);
-    z-index: 1000;
-    transition: var(--transition);
-    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.float-btn:hover {
+    transform: translateY(-3px);
+    color: white;
+}
+
+.whatsapp-float {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 30px;
+    background-color: #C492B1;
+    /* Soft Purple */
+    flex-shrink: 0;
+    /* Prevent shrinking */
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
+    background-color: #b07a9d;
+}
+
+.call-float {
+    height: 50px;
+    /* Slightly smaller height for the pill */
+    width: auto;
+    /* Allow growth */
+    background-color: var(--color-primary-dark);
+    /* Dark Purple */
+    border-radius: 25px;
+    /* Pill shape */
+    padding: 0 25px;
+    font-size: 14px;
+    font-weight: 700;
+    /* Bold */
+    letter-spacing: 0.5px;
+    gap: 10px;
+    white-space: nowrap;
+    /* Prevent text overflow */
+    margin-bottom: 5px;
+    /* Align visually with the circle center if needed, or remove if using flex-end */
+}
+
+.call-float i {
+    font-size: 16px;
+}
+
+.call-float:hover {
+    background-color: #4a2c35;
+}
+
+/* Responsive adjustments for floating buttons */
+@media (max-width: 768px) {
+    .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+    }
+
+    .call-float {
+        height: 45px;
+        padding: 0 20px;
+        font-size: 13px;
+    }
 }
 
 @keyframes pulse {
