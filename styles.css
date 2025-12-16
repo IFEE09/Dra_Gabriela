@@ -157,17 +157,19 @@ a {
 }
 
 .float-btn {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: white;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Spring effect */
 }
 
 .float-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.3);
     color: white;
 }
 
@@ -180,10 +182,13 @@ a {
     /* Soft Purple */
     flex-shrink: 0;
     /* Prevent shrinking */
+    animation: pulsePurple 3s infinite;
 }
 
 .whatsapp-float:hover {
     background-color: #b07a9d;
+    animation: none;
+    /* Stop pulse on hover */
 }
 
 .call-float {
@@ -205,6 +210,9 @@ a {
     /* Prevent text overflow */
     margin-bottom: 5px;
     /* Align visually with the circle center if needed, or remove if using flex-end */
+    animation: pulseDark 3s infinite;
+    animation-delay: 1.5s;
+    /* Alternate with whatsapp */
 }
 
 .call-float i {
@@ -213,6 +221,36 @@ a {
 
 .call-float:hover {
     background-color: #4a2c35;
+    animation: none;
+}
+
+/* Animations */
+@keyframes pulsePurple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 146, 177, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(196, 146, 177, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 146, 177, 0);
+    }
+}
+
+@keyframes pulseDark {
+    0% {
+        box-shadow: 0 0 0 0 rgba(94, 56, 68, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(94, 56, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(94, 56, 68, 0);
+    }
 }
 
 /* Responsive adjustments for floating buttons */
@@ -272,14 +310,23 @@ a {
 }
 
 .logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-primary);
+    display: flex;
+    align-items: center;
 }
 
-.logo span {
-    color: var(--color-accent);
+.logo img {
+    height: 40px;
+    /* Smaller for desktop */
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 85px;
+        /* Increased size for mobile (50 + 35) */
+    }
 }
 
 .nav {
