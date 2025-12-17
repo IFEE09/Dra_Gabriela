@@ -295,7 +295,7 @@ a {
     background: rgba(253, 251, 249, 0.95);
     backdrop-filter: blur(10px);
     z-index: 999;
-    padding: 16px 0;
+    padding: 4px 0;
     transition: var(--transition);
 }
 
@@ -315,8 +315,8 @@ a {
 }
 
 .logo img {
-    height: 94px;
-    /* Desktop (55 * 1.7) */
+    height: 60px;
+    /* Adjusted to 60px */
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -324,8 +324,8 @@ a {
 
 @media (max-width: 768px) {
     .logo img {
-        height: 77px;
-        /* Mobile (45 * 1.7) */
+        height: 60px;
+        /* Adjusted to 60px */
     }
 }
 
