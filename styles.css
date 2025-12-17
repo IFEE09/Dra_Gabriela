@@ -315,17 +315,17 @@ a {
 }
 
 .logo img {
-    height: 40px;
-    /* Smaller for desktop */
+    height: 55px;
+    /* Desktop */
     width: auto;
     object-fit: contain;
-    transition: height 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
     .logo img {
-        height: 85px;
-        /* Increased size for mobile (50 + 35) */
+        height: 45px;
+        /* Mobile - fits navbar well */
     }
 }
 
