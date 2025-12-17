@@ -315,8 +315,8 @@ a {
 }
 
 .logo img {
-    height: 55px;
-    /* Desktop */
+    height: 94px;
+    /* Desktop (55 * 1.7) */
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -324,8 +324,8 @@ a {
 
 @media (max-width: 768px) {
     .logo img {
-        height: 45px;
-        /* Mobile - fits navbar well */
+        height: 77px;
+        /* Mobile (45 * 1.7) */
     }
 }
 
