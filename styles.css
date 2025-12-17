@@ -2,8 +2,8 @@
     --color-primary: #8B5A6B;
     --color-primary-light: #B08293;
     /* Lighter and more pastel */
-    --color-primary-dark: #5E3844;
-    /* Deeper for better contrast */
+    --color-primary-dark: #8B5A6B;
+    /* Changed to match primary as requested */
     /* Adjusted for smoother gradient */
     --color-accent: #D4A574;
     --color-accent-dark: #B08355;
