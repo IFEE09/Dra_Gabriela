@@ -320,6 +320,7 @@ a {
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
+    filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.5));
 }
 
 @media (max-width: 768px) {
@@ -426,6 +427,7 @@ a {
     font-size: 0.875rem;
     font-weight: 500;
     margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
 }
 
 .hero-title {
@@ -458,28 +460,43 @@ a {
 }
 
 .hero-credentials {
-    display: flex;
-    gap: 24px;
-    margin-top: 40px;
-    padding-top: 40px;
-    border-top: 1px solid var(--color-border);
-}
-
-.credential {
     text-align: center;
-}
-
-.credential-number {
-    font-family: var(--font-credentials);
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    letter-spacing: 1px;
-}
-
-.credential-label {
-    font-size: 0.875rem;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
     color: var(--color-text-light);
+}
+
+.credential-item {
+    display: inline-block;
+}
+
+.credential-item.name {
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.credential-item:not(:last-child)::after {
+    content: "•";
+    margin: 0 10px;
+    color: var(--color-primary-light);
+}
+
+@media (max-width: 768px) {
+    .hero-credentials {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .credential-item {
+        display: block;
+    }
+
+    .credential-item:not(:last-child)::after {
+        display: none;
+    }
 }
 
 .hero-image {
@@ -543,7 +560,7 @@ a {
 
 .section-label {
     display: inline-block;
-    font-size: 0.875rem;
+    font-size: 28px;
     font-weight: 600;
     color: var(--color-primary);
     text-transform: uppercase;
