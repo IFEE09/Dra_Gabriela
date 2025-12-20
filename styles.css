@@ -1782,6 +1782,146 @@ a {
         grid-template-columns: 1fr;
     }
 
+    /* Credentials Logos Grid */
+    .credentials-logos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .credential-logo-card {
+        background: white;
+        padding: 30px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--color-border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: var(--transition);
+    }
+
+    .credential-logo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-primary-light);
+    }
+
+    .credential-logo-card h4 {
+        margin-top: 20px;
+        font-size: 1.1rem;
+        color: var(--color-text);
+    }
+
+    .membership-no {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-primary);
+    }
+
+    .logo-box {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    /* CSS Logos (Placeholders matching branding) */
+
+    /* MFM Logo */
+    .mfm-logo {
+        gap: 10px;
+    }
+
+    .mfm-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 4px solid #F59E0B;
+        /* Orange */
+        border-bottom-color: transparent;
+        transform: rotate(-45deg);
+    }
+
+    .mfm-text span {
+        font-size: 0.7rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* MFB Logo */
+    .mfb-logo {
+        background: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        gap: 10px;
+    }
+
+    .mfb-icon {
+        font-size: 3rem;
+        color: #0EA5E9;
+        /* Light Blue */
+        font-family: serif;
+        line-height: 0.5;
+        margin-top: 10px;
+    }
+
+    .mfb-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1;
+    }
+
+    .mfb-text span {
+        font-size: 0.7rem;
+        color: #666;
+        letter-spacing: 1px;
+    }
+
+    .mfb-text strong {
+        font-size: 1rem;
+        color: #0EA5E9;
+    }
+
+    /* LASUS Logo */
+    .lasus-logo {
+        background: #6D28D9;
+        /* Purple */
+        border-radius: 4px;
+    }
+
+    .lasus-logo span {
+        color: white;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    /* ISUOG Logo */
+    .isuog-logo {
+        gap: 5px;
+    }
+
+    .isuog-icon i {
+        font-size: 2rem;
+        color: #d1d1d1;
+    }
+
+    .isuog-text {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #DC2626;
+        /* Red */
+        font-family: sans-serif;
+        letter-spacing: -1px;
+    }
+
     .oncology-card {
         padding: 30px 20px;
     }
