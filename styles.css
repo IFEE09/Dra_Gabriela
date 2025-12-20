@@ -1456,17 +1456,26 @@ a {
     justify-content: center;
     width: 45%;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
-    padding-right: 20px;
+    padding-right: 5px;
+    /* Reduced from 20px */
     text-align: center;
     font-weight: 700;
     font-size: 1.2rem;
     font-family: var(--font-display);
     text-transform: uppercase;
+    margin-bottom: 0;
+    /* Ensure no margin bottom as requested */
 }
 
 .location-logo i {
     font-size: 2.5rem;
     margin-bottom: 8px;
+}
+
+.location-logo img {
+    display: block;
+    /* Removes inline gap */
+    margin-bottom: 0;
 }
 
 .location-logo span {
@@ -1478,11 +1487,13 @@ a {
 
 .location-text {
     width: 55%;
-    text-align: right;
+    text-align: left;
+    /* Changed from right to left to reduce gap */
     font-weight: 600;
     font-size: 1.1rem;
     line-height: 1.4;
-    padding-left: 20px;
+    padding-left: 10px;
+    /* Increased slightly for spacing from border */
     letter-spacing: 0.5px;
 }
 
@@ -1499,7 +1510,8 @@ a {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         padding-right: 0;
-        padding-bottom: 15px;
+        padding-bottom: 5px;
+        /* Reduced from 15px */
     }
 
     .location-text {
