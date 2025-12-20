@@ -1400,96 +1400,96 @@ a {
 
 .location-btn {
     display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
     align-items: center;
     justify-content: space-between;
     background-color: var(--color-primary);
-    /* Reverted to original purple */
     color: white;
-    padding: 15px 20px;
-    /* Reduced padding */
-    border-radius: var(--radius-md);
+    padding: 8px 16px 8px 12px;
+    border-radius: 50px;
+    /* Pill shape */
     text-decoration: none;
     transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-    border: 2px solid transparent;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 15px;
+    height: 70px;
+    position: relative;
+    gap: 15px;
 }
 
 .location-btn:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     background-color: var(--color-primary-dark);
-    /* Reverted hover color */
+}
+
+/* Add phone icon circle */
+.location-btn::after {
+    content: '\f095';
+    /* FontAwesome Phone */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .location-logo {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    /* Center horizontally in its box if slightly wider */
+    width: auto;
+    max-width: 90px;
+    height: 40px;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
-    padding-right: 5px;
-    /* Reduced from 20px */
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-    font-family: var(--font-display);
-    text-transform: uppercase;
+    padding-right: 12px;
     margin-bottom: 0;
-    /* Ensure no margin bottom as requested */
-}
-
-.location-logo i {
-    font-size: 2.5rem;
-    margin-bottom: 8px;
+    flex-shrink: 0;
 }
 
 .location-logo img {
     display: block;
-    /* Removes inline gap */
+    max-height: 35px !important;
+    /* Limit height */
+    width: auto;
     margin-bottom: 0;
 }
 
-.location-logo span {
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.2;
-    font-family: var(--font-display);
-}
-
 .location-text {
-    width: 55%;
+    width: auto;
     text-align: left;
-    /* Changed from right to left to reduce gap */
+    padding-left: 0;
     font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 1.4;
-    padding-left: 10px;
-    /* Increased slightly for spacing from border */
-    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    /* Slightly larger than mobile 0.75rem */
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 @media (max-width: 480px) {
-    .location-btn {
-        flex-direction: column;
-        padding: 24px 20px;
-        text-align: center;
-        gap: 20px;
-    }
 
-    .location-logo {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        padding-right: 0;
-        padding-bottom: 15px;
-        margin-bottom: 0;
-    }
-
+    /* Mobile-specific tweaks only (if any remain) */
     .location-text {
-        width: 100%;
-        text-align: center;
-        padding-left: 0;
+        font-size: 0.75rem;
+    }
+
+    .location-text span:first-child {
+        display: none;
     }
 }
 

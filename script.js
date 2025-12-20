@@ -153,7 +153,12 @@ if (sliderTrack && slides.length > 0) {
 
     // 2. Variables
     let currentX = 0;
-    let speed = 1.6; // Pixels per frame
+    let speed = window.innerWidth <= 768 ? 1.6 : 0.5; // 1.6px mobile, 0.5px desktop
+
+    // Update speed on resize
+    window.addEventListener('resize', () => {
+        speed = window.innerWidth <= 768 ? 1.6 : 0.5;
+    });
     let isDragging = false;
     let startX = 0;
     let lastX = 0;
