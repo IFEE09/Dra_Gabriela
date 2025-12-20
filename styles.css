@@ -1951,3 +1951,17 @@ a {
 .oncology-text {
     text-align: center;
 }
+.location-map {
+    margin: 20px 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+}
+
+.location-map iframe {
+    width: 100%;
+    height: 250px;
+    border: 0;
+    display: block;
+}
