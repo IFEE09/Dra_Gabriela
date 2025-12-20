@@ -140,123 +140,92 @@ if (bookingForm) {
     });
 }
 
-// Testimonials Slider Logic
+// Testimonials Infinite Scroll & Drag Logic
 const sliderTrack = document.querySelector('.testimonials-track');
 const slides = document.querySelectorAll('.testimonial-slide');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const dotsContainer = document.querySelector('.slider-dots');
 
 if (sliderTrack && slides.length > 0) {
-    const originalSlideCount = slides.length;
-    let currentSlide = 1; // Start at 1 because of cloned slide
-
-    // Clone first and last slides for infinite loop
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[originalSlideCount - 1].cloneNode(true);
-
-    // Add clones to DOM
-    sliderTrack.appendChild(firstClone);
-    sliderTrack.insertBefore(lastClone, slides[0]);
-
-    // Update slides NodeList to include clones
-    const allSlides = document.querySelectorAll('.testimonial-slide');
-    const totalSlides = allSlides.length;
-
-    // Set initial position
-    sliderTrack.style.transform = `translateX(-100%)`;
-
-    // Create dots for original slides only
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('slider-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-            // Calculate target index in the new array (index + 1 because of clone)
-            moveToSlide(index + 1);
-        });
-        dotsContainer.appendChild(dot);
+    // 1. Setup Clones for Infinite Loop
+    slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        sliderTrack.appendChild(clone);
     });
 
-    const dots = document.querySelectorAll('.slider-dot');
+    // 2. Variables
+    let currentX = 0;
+    let speed = 0.5; // Pixels per frame
+    let isDragging = false;
+    let startX = 0;
+    let lastX = 0;
+    let animationId;
+    let isPaused = false;
 
-    function updateDots(index) {
-        // Map current index (including clones) to original dot index (0 to originalSlideCount - 1)
-        let dotIndex = index - 1;
-        if (dotIndex < 0) dotIndex = originalSlideCount - 1;
-        if (dotIndex >= originalSlideCount) dotIndex = 0;
+    // The width of the original set of slides (plus gaps)
+    let singleSetWidth = 0;
 
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[dotIndex]) {
-            dots[dotIndex].classList.add('active');
+    function calculateWidth() {
+        if (slides.length > 0) {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = window.innerWidth <= 768 ? 40 : 30; // Mobile has 40px gap, Desktop 30px
+            singleSetWidth = (slideWidth + gap) * slides.length;
         }
     }
 
-    let isTransitioning = false;
+    // Initial Calc
+    setTimeout(calculateWidth, 100);
+    window.addEventListener('resize', calculateWidth);
 
-    function moveToSlide(index) {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentSlide = index;
+    // 3. Animation Loop
+    function animate() {
+        if (!isDragging && !isPaused) {
+            currentX -= speed;
 
-        sliderTrack.style.transition = 'transform 0.5s ease-in-out';
-        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Loop Logic: Reset when entire set has scrolled
+            if (Math.abs(currentX) >= singleSetWidth && singleSetWidth > 0) {
+                currentX += singleSetWidth;
+            }
+        }
 
-        updateDots(currentSlide);
+        sliderTrack.style.transform = `translateX(${currentX}px)`;
+        animationId = requestAnimationFrame(animate);
     }
 
-    sliderTrack.addEventListener('transitionend', () => {
-        isTransitioning = false;
+    // Start Animation
+    animate();
 
-        // Loop logic
-        if (currentSlide === 0) {
-            sliderTrack.style.transition = 'none';
-            currentSlide = totalSlides - 2;
-            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-        if (currentSlide === totalSlides - 1) {
-            sliderTrack.style.transition = 'none';
-            currentSlide = 1;
-            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-    });
+    // 4. Interaction Events (Mouse & Touch)
+    const startDrag = (e) => {
+        isDragging = true;
+        isPaused = true;
+        startX = e.pageX || e.touches[0].pageX;
+        lastX = currentX;
+        sliderTrack.style.cursor = 'grabbing';
+    };
 
-    // Event Listeners
-    if (prevBtn) prevBtn.addEventListener('click', () => moveToSlide(currentSlide - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => moveToSlide(currentSlide + 1));
+    const moveDrag = (e) => {
+        if (!isDragging) return;
+        const x = e.pageX || e.touches[0].pageX;
+        const diff = x - startX;
+        currentX = lastX + diff;
+    };
 
-    // Auto Play
-    let slideInterval = setInterval(() => moveToSlide(currentSlide + 1), 5000);
+    const endDrag = () => {
+        isDragging = false;
+        isPaused = false;
+        sliderTrack.style.cursor = 'grab';
+    };
+
+    // Mouse Events
+    sliderTrack.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', moveDrag);
+    window.addEventListener('mouseup', endDrag);
+
+    // Touch Events
+    sliderTrack.addEventListener('touchstart', startDrag);
+    window.addEventListener('touchmove', moveDrag);
+    window.addEventListener('touchend', endDrag);
 
     // Pause on hover
-    const sliderContainer = document.querySelector('.testimonials-slider-container');
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        sliderContainer.addEventListener('mouseleave', () => {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(() => moveToSlide(currentSlide + 1), 5000);
-        });
-    }
-
-    // Touch Support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    sliderTrack.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    sliderTrack.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        if (touchEndX < touchStartX - 50) {
-            moveToSlide(currentSlide + 1);
-        }
-        if (touchEndX > touchStartX + 50) {
-            moveToSlide(currentSlide - 1);
-        }
-    }
+    sliderTrack.addEventListener('mouseenter', () => { if (!isDragging) isPaused = true; });
+    sliderTrack.addEventListener('mouseleave', () => { if (!isDragging) isPaused = false; });
 }
