@@ -1416,3 +1416,95 @@ a {
     filter: invert(42%) sepia(13%) saturate(1453%) hue-rotate(293deg) brightness(91%) contrast(87%);
     /* Matches #8B5A6B */
 }
+
+/* Location Buttons */
+.location-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    width: 100%;
+}
+
+.location-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    /* Reverted to original purple */
+    color: white;
+    padding: 24px 32px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+}
+
+.location-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-primary-dark);
+    /* Reverted hover color */
+}
+
+.location-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    padding-right: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+}
+
+.location-logo i {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.location-logo span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: var(--font-display);
+}
+
+.location-text {
+    width: 55%;
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    padding-left: 20px;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 480px) {
+    .location-btn {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .location-logo {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-right: 0;
+        padding-bottom: 15px;
+    }
+
+    .location-text {
+        width: 100%;
+        text-align: center;
+        padding-left: 0;
+    }
+}
