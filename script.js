@@ -153,7 +153,7 @@ if (sliderTrack && slides.length > 0) {
 
     // 2. Variables
     let currentX = 0;
-    let speed = 0.5; // Pixels per frame
+    let speed = 1.6; // Pixels per frame
     let isDragging = false;
     let startX = 0;
     let lastX = 0;

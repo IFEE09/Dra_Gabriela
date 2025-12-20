@@ -1783,163 +1783,171 @@ a {
     }
 
     /* Credentials Logos Grid */
-    .credentials-logos-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
+}
 
-    .credential-logo-card {
-        background: white;
-        padding: 30px;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--color-border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: var(--transition);
-    }
+/* Credentials Logos Grid */
+.credentials-logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* slightly reduced for better fit */
+    gap: 30px;
+    margin-top: 40px;
+    /* Removed align-items: center to allow grid items to stretch to equal height */
+}
 
-    .credential-logo-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--color-primary-light);
-    }
+.credential-logo-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Center content vertically */
+    text-align: center;
+    transition: var(--transition);
+    height: 100%;
+    /* Ensure full height filling */
+}
 
-    .credential-logo-card h4 {
-        margin-top: 20px;
-        font-size: 1.1rem;
-        color: var(--color-text);
-    }
+.credential-logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
+}
 
-    .membership-no {
-        margin-top: 5px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--color-primary);
-    }
+.credential-logo-card h4 {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
 
-    .logo-box {
-        height: 80px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
+.membership-no {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
 
-    /* CSS Logos (Placeholders matching branding) */
+.logo-box {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
 
-    /* MFM Logo */
-    .mfm-logo {
-        gap: 10px;
-    }
+/* CSS Logos (Placeholders matching branding) */
 
-    .mfm-circle {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 4px solid #F59E0B;
-        /* Orange */
-        border-bottom-color: transparent;
-        transform: rotate(-45deg);
-    }
+/* MFM Logo */
+.mfm-logo {
+    gap: 10px;
+}
 
-    .mfm-text span {
-        font-size: 0.7rem;
-        color: #555;
-        font-weight: 500;
-    }
+.mfm-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #F59E0B;
+    /* Orange */
+    border-bottom-color: transparent;
+    transform: rotate(-45deg);
+}
 
-    /* MFB Logo */
-    .mfb-logo {
-        background: #f8f8f8;
-        padding: 10px;
-        border-radius: 5px;
-        gap: 10px;
-    }
+.mfm-text span {
+    font-size: 0.7rem;
+    color: #555;
+    font-weight: 500;
+}
 
-    .mfb-icon {
-        font-size: 3rem;
-        color: #0EA5E9;
-        /* Light Blue */
-        font-family: serif;
-        line-height: 0.5;
-        margin-top: 10px;
-    }
+/* MFB Logo */
+.mfb-logo {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+}
 
-    .mfb-text {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        line-height: 1;
-    }
+.mfb-icon {
+    font-size: 3rem;
+    color: #0EA5E9;
+    /* Light Blue */
+    font-family: serif;
+    line-height: 0.5;
+    margin-top: 10px;
+}
 
-    .mfb-text span {
-        font-size: 0.7rem;
-        color: #666;
-        letter-spacing: 1px;
-    }
+.mfb-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+}
 
-    .mfb-text strong {
-        font-size: 1rem;
-        color: #0EA5E9;
-    }
+.mfb-text span {
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 1px;
+}
 
-    /* LASUS Logo */
-    .lasus-logo {
-        background: #6D28D9;
-        /* Purple */
-        border-radius: 4px;
-    }
+.mfb-text strong {
+    font-size: 1rem;
+    color: #0EA5E9;
+}
 
-    .lasus-logo span {
-        color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-    }
+/* LASUS Logo */
+.lasus-logo {
+    background: #6D28D9;
+    /* Purple */
+    border-radius: 4px;
+}
 
-    /* ISUOG Logo */
-    .isuog-logo {
-        gap: 5px;
-    }
+.lasus-logo span {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
 
-    .isuog-icon i {
-        font-size: 2rem;
-        color: #d1d1d1;
-    }
+/* ISUOG Logo */
+.isuog-logo {
+    gap: 5px;
+}
 
-    .isuog-text {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #DC2626;
-        /* Red */
-        font-family: sans-serif;
-        letter-spacing: -1px;
-    }
+.isuog-icon i {
+    font-size: 2rem;
+    color: #d1d1d1;
+}
 
-    .oncology-card {
-        padding: 30px 20px;
-    }
+.isuog-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #DC2626;
+    /* Red */
+    font-family: sans-serif;
+    letter-spacing: -1px;
+}
 
-    .oncology-card-header {
-        flex-direction: column;
-        text-align: center;
-    }
+.oncology-card {
+    padding: 30px 20px;
+}
 
-    .oncology-card h3 {
-        font-size: 1.25rem;
-    }
+.oncology-card-header {
+    flex-direction: column;
+    text-align: center;
+}
 
-    .oncology-tags {
-        justify-content: center;
-    }
+.oncology-card h3 {
+    font-size: 1.25rem;
+}
 
-    .oncology-text {
-        text-align: center;
-    }
+.oncology-tags {
+    justify-content: center;
+}
+
+.oncology-text {
+    text-align: center;
 }
