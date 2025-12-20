@@ -1519,7 +1519,8 @@ a {
         max-width: 800px;
         margin: 0 auto;
         overflow: hidden;
-        padding: 20px 0 60px;
+        padding: 12px 0 60px;
+        /* Reduced top padding to 12px */
     }
 
     .testimonials-track {
@@ -1632,4 +1633,9 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* Adjust section header margin specifically for testimonials */
+#testimonios .section-header {
+    margin-bottom: 0;
 }

@@ -148,50 +148,85 @@ const nextBtn = document.querySelector('.next-btn');
 const dotsContainer = document.querySelector('.slider-dots');
 
 if (sliderTrack && slides.length > 0) {
-    let currentSlide = 0;
-    const totalSlides = slides.length;
+    const originalSlideCount = slides.length;
+    let currentSlide = 1; // Start at 1 because of cloned slide
 
-    // Create dots
+    // Clone first and last slides for infinite loop
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[originalSlideCount - 1].cloneNode(true);
+
+    // Add clones to DOM
+    sliderTrack.appendChild(firstClone);
+    sliderTrack.insertBefore(lastClone, slides[0]);
+
+    // Update slides NodeList to include clones
+    const allSlides = document.querySelectorAll('.testimonial-slide');
+    const totalSlides = allSlides.length;
+
+    // Set initial position
+    sliderTrack.style.transform = `translateX(-100%)`;
+
+    // Create dots for original slides only
     slides.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('slider-dot');
         if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
+        dot.addEventListener('click', () => {
+            // Calculate target index in the new array (index + 1 because of clone)
+            moveToSlide(index + 1);
+        });
         dotsContainer.appendChild(dot);
     });
 
     const dots = document.querySelectorAll('.slider-dot');
 
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            if (index === currentSlide) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    }
+    function updateDots(index) {
+        // Map current index (including clones) to original dot index (0 to originalSlideCount - 1)
+        let dotIndex = index - 1;
+        if (dotIndex < 0) dotIndex = originalSlideCount - 1;
+        if (dotIndex >= originalSlideCount) dotIndex = 0;
 
-    function goToSlide(index) {
-        if (index < 0) {
-            currentSlide = totalSlides - 1;
-        } else if (index >= totalSlides) {
-            currentSlide = 0;
-        } else {
-            currentSlide = index;
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[dotIndex]) {
+            dots[dotIndex].classList.add('active');
         }
-
-        const offset = currentSlide * 100;
-        sliderTrack.style.transform = `translateX(-${offset}%)`;
-        updateDots();
     }
+
+    let isTransitioning = false;
+
+    function moveToSlide(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentSlide = index;
+
+        sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        updateDots(currentSlide);
+    }
+
+    sliderTrack.addEventListener('transitionend', () => {
+        isTransitioning = false;
+
+        // Loop logic
+        if (currentSlide === 0) {
+            sliderTrack.style.transition = 'none';
+            currentSlide = totalSlides - 2;
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        if (currentSlide === totalSlides - 1) {
+            sliderTrack.style.transition = 'none';
+            currentSlide = 1;
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    });
 
     // Event Listeners
-    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => moveToSlide(currentSlide - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => moveToSlide(currentSlide + 1));
 
     // Auto Play
-    let slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+    let slideInterval = setInterval(() => moveToSlide(currentSlide + 1), 5000);
 
     // Pause on hover
     const sliderContainer = document.querySelector('.testimonials-slider-container');
@@ -199,11 +234,11 @@ if (sliderTrack && slides.length > 0) {
         sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
         sliderContainer.addEventListener('mouseleave', () => {
             clearInterval(slideInterval);
-            slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+            slideInterval = setInterval(() => moveToSlide(currentSlide + 1), 5000);
         });
     }
 
-    // Touch Support (Simple Swipe)
+    // Touch Support
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -218,10 +253,10 @@ if (sliderTrack && slides.length > 0) {
 
     function handleSwipe() {
         if (touchEndX < touchStartX - 50) {
-            goToSlide(currentSlide + 1); // Swipe Left -> Next
+            moveToSlide(currentSlide + 1);
         }
         if (touchEndX > touchStartX + 50) {
-            goToSlide(currentSlide - 1); // Swipe Right -> Prev
+            moveToSlide(currentSlide - 1);
         }
     }
 }
