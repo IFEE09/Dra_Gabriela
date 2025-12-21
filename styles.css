@@ -1951,6 +1951,7 @@ a {
 .oncology-text {
     text-align: center;
 }
+
 .location-map {
     margin: 20px 0;
     border-radius: var(--radius-md);
@@ -1970,4 +1971,76 @@ a {
     padding: 10px 24px;
     font-size: 0.9375rem;
     min-height: 44px;
+}
+
+/* New Special Grid for 'Why Choose Me' inside section header */
+.why-choose-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0 20px;
+    /* Reduced bottom margin to bring next section closer */
+    text-align: left;
+    /* Reset alignment because usually headers are centered */
+}
+
+.why-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Soft premium shadow */
+    border: 1px solid rgba(139, 90, 107, 0.1);
+    /* Subtle primary color border */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(139, 90, 107, 0.15);
+    border-color: rgba(139, 90, 107, 0.3);
+}
+
+.why-icon-box {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-white));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 10px rgba(139, 90, 107, 0.1);
+}
+
+.why-card h4 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.why-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    .why-choose-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 30px 0 20px;
+    }
 }
