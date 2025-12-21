@@ -238,3 +238,40 @@ if (sliderTrack && slides.length > 0) {
     sliderTrack.addEventListener('mouseenter', () => { if (!isDragging) isPaused = true; });
     sliderTrack.addEventListener('mouseleave', () => { if (!isDragging) isPaused = false; });
 }
+
+// Lightbox Logic for Certificates
+const certSlides = document.querySelectorAll('.cert-slide img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+if (lightbox && lightboxImg && certSlides.length > 0) {
+    certSlides.forEach(img => {
+        img.addEventListener('click', () => {
+            lightbox.classList.add('active');
+            lightboxImg.src = img.src;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+    });
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
