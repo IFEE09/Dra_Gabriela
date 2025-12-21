@@ -146,10 +146,14 @@ const slides = document.querySelectorAll('.testimonial-slide');
 
 if (sliderTrack && slides.length > 0) {
     // 1. Setup Clones for Infinite Loop
-    slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        sliderTrack.appendChild(clone);
-    });
+    // Clone multiple times to ensure we have enough content to scroll smoothly without "cutting"
+    // even on very wide screens.
+    for (let i = 0; i < 3; i++) {
+        slides.forEach(slide => {
+            const clone = slide.cloneNode(true);
+            sliderTrack.appendChild(clone);
+        });
+    }
 
     // 2. Variables
     let currentX = 0;
