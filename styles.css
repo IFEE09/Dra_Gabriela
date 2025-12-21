@@ -1965,3 +1965,9 @@ a {
     border: 0;
     display: block;
 }
+
+.btn-sm {
+    padding: 10px 24px;
+    font-size: 0.9375rem;
+    min-height: 44px;
+}
