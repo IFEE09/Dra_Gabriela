@@ -125,12 +125,54 @@ if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const service = document.getElementById('service').value;
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const date = document.getElementById('date').value;
+        // Get form values
+        const serviceEl = document.getElementById('service');
+        const nameEl = document.getElementById('name');
+        const phoneEl = document.getElementById('phone');
+        const dateEl = document.getElementById('date');
 
-        const message = `Hola Dra. Gabriela, me gustaría agendar una cita.%0A%0A*Nombre:* ${name}%0A*Servicio:* ${service}%0A*Teléfono:* ${phone}%0A*Fecha preferente:* ${date || 'Por definir'}`;
+        // Use security sanitization if available
+        let service = serviceEl ? serviceEl.value : '';
+        let name = nameEl ? nameEl.value : '';
+        let phone = phoneEl ? phoneEl.value : '';
+        let date = dateEl ? dateEl.value : '';
+
+        // Apply security sanitization
+        if (window.SecurityUtils && window.SecurityUtils.sanitize) {
+            const sanitize = window.SecurityUtils.sanitize;
+
+            // Sanitize name (required)
+            name = sanitize.sanitizeName(name);
+            if (!name) {
+                alert('Por favor ingresa un nombre válido.');
+                nameEl.focus();
+                return;
+            }
+
+            // Sanitize phone (required)
+            phone = sanitize.sanitizePhone(phone);
+            if (!phone) {
+                alert('Por favor ingresa un número de teléfono válido (mínimo 10 dígitos).');
+                phoneEl.focus();
+                return;
+            }
+
+            // Sanitize date (optional)
+            if (date) {
+                date = sanitize.sanitizeDate(date);
+                if (!date) {
+                    alert('Por favor selecciona una fecha válida (no puede ser en el pasado).');
+                    dateEl.focus();
+                    return;
+                }
+            }
+
+            // Escape service for safety
+            service = sanitize.escapeHTML(service);
+        }
+
+        // Build WhatsApp message with sanitized data
+        const message = `Hola Dra. Gabriela, me gustaría agendar una cita.%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Servicio:* ${encodeURIComponent(service)}%0A*Teléfono:* ${encodeURIComponent(phone)}%0A*Fecha preferente:* ${encodeURIComponent(date || 'Por definir')}`;
 
         const whatsappUrl = `https://wa.me/529992010898?text=${message}`;
 

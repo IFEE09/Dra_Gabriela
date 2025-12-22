@@ -1,0 +1,175 @@
+# ========================================================
+# SECURITY CONFIGURATION - Dra. Gabriela Canché Website
+# ========================================================
+# Este archivo configura headers de seguridad a nivel servidor
+# Compatible con Apache (hosting compartido, cpanel, etc.)
+# ========================================================
+
+# ==========================================
+# 1. SECURITY HEADERS
+# ==========================================
+<IfModule mod_headers.c>
+    # Prevenir Clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Habilitar protección XSS del navegador
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Política de Referrer
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn-uicons.flaticon.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn-uicons.flaticon.com; img-src 'self' data: https: blob:; frame-src 'self' https://www.google.com https://maps.google.com; connect-src 'self' https://wa.me https://api.whatsapp.com; base-uri 'self'; form-action 'self' https://wa.me; frame-ancestors 'self'; upgrade-insecure-requests;"
+    
+    # Permissions Policy (antes Feature-Policy)
+    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    
+    # Forzar HTTPS (HSTS) - Descomentar cuando el sitio tenga SSL
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Prevenir que el sitio sea usado como referencia para ataques
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Embedder-Policy "require-corp"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+    
+    # Eliminar headers que revelan información del servidor
+    Header unset X-Powered-By
+    Header unset Server
+</IfModule>
+
+# ==========================================
+# 2. DDoS PROTECTION - Rate Limiting
+# ==========================================
+<IfModule mod_evasive20.c>
+    DOSHashTableSize 3097
+    DOSPageCount 5
+    DOSSiteCount 100
+    DOSPageInterval 1
+    DOSSiteInterval 1
+    DOSBlockingPeriod 60
+</IfModule>
+
+# ==========================================
+# 3. PREVENT HOTLINKING (Robo de imágenes)
+# ==========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?dragabrielacanche\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?google\. [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?facebook\. [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?instagram\. [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,L]
+</IfModule>
+
+# ==========================================
+# 4. BLOCK SUSPICIOUS USER AGENTS
+# ==========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block common attack tools and bad bots
+    RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} ^-?$
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ==========================================
+# 5. BLOCK ACCESS TO SENSITIVE FILES
+# ==========================================
+<FilesMatch "(^\.htaccess|^\.htpasswd|^\.git|^\.env|\.sql$|\.bak$|\.log$|\.ini$|\.sh$)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block access to hidden files/directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (^|/)\. - [F]
+</IfModule>
+
+# ==========================================
+# 6. PREVENT DIRECTORY LISTING
+# ==========================================
+Options -Indexes
+
+# ==========================================
+# 7. LIMIT HTTP METHODS
+# ==========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK|DEBUG|MOVE|COPY|PROPFIND|PROPPATCH|MKCOL|LOCK|UNLOCK) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ==========================================
+# 8. PREVENT SQL INJECTION & XSS IN URLs
+# ==========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block SQL injection attempts
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+    RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+    RewriteCond %{QUERY_STRING} base64_(en|de)code\(.*\) [NC,OR]
+    RewriteCond %{QUERY_STRING} UNION.*SELECT [NC,OR]
+    RewriteCond %{QUERY_STRING} (\||\|\|) [OR]
+    RewriteCond %{QUERY_STRING} (\;|\;) [OR]
+    RewriteCond %{QUERY_STRING} '.*' [NC,OR]
+    RewriteCond %{QUERY_STRING} ".*" [NC,OR]
+    RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\<|%3C).*body.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} etc/passwd [NC,OR]
+    RewriteCond %{QUERY_STRING} boot\.ini [NC,OR]
+    RewriteCond %{QUERY_STRING} ftp: [NC,OR]
+    RewriteCond %{QUERY_STRING} https?: [NC,OR]
+    RewriteCond %{QUERY_STRING} \=\.\.\/ [NC,OR]
+    RewriteCond %{QUERY_STRING} \=\.\. [NC,OR]
+    RewriteCond %{QUERY_STRING} \.\.\/ [NC,OR]
+    RewriteCond %{QUERY_STRING} \.\./ [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ==========================================
+# 9. COMPRESSION (Performance + Security benefit)
+# ==========================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/ld+json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ==========================================
+# 10. BROWSER CACHING
+# ==========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 1 day"
+</IfModule>
+
+# ==========================================
+# 11. FORCE HTTPS (Descomentar cuando tenga SSL)
+# ==========================================
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>

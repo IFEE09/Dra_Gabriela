@@ -1,6 +1,13 @@
 {
-  "name": "Dra. Gabriela Canche",
-  "short_name": "Dra. Canche",
+  "name": "Dra. Gabriela Canché - Ultrasonido y Mamografía Mérida",
+  "short_name": "Dra. Canché",
+  "description": "Especialista en ultrasonido ginecológico, mamografía, mapeo de endometriosis y diagnóstico prenatal en Mérida, Yucatán. Única radióloga certificada en mapeo endometriósico ENZIAN.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": ["health", "medical"],
   "icons": [
     {
       "src": "favicon-16x16.png",
@@ -15,10 +22,12 @@
     {
       "src": "apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#8B5A6B",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary"
 }
