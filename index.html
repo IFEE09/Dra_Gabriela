@@ -51,6 +51,9 @@
 
     <!-- ========== SECURITY HEADERS ========== -->
     <!-- Content Security Policy - Previene XSS, injection y recursos maliciosos -->
+    <!-- NOTA: CSP comentado para desarrollo local con Live Server. 
+         En producción (Netlify), el CSP se aplica via netlify.toml -->
+    <!--
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com;
@@ -64,48 +67,8 @@
         frame-ancestors 'self';
         upgrade-insecure-requests;
     ">
+    -->
 
-    <!-- Previene MIME type sniffing -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-    <!-- Protección XSS del navegador (legacy, pero aún útil) -->
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-
-    <!-- Previene clickjacking -->
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-
-    <!-- Política de referrer - No enviar información sensible -->
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <!-- Permissions Policy - Restringe APIs del navegador -->
-    <meta http-equiv="Permissions-Policy" content="
-        accelerometer=(),
-        ambient-light-sensor=(),
-        autoplay=(),
-        battery=(),
-        camera=(),
-        display-capture=(),
-        document-domain=(),
-        encrypted-media=(),
-        execution-while-not-rendered=(),
-        execution-while-out-of-viewport=(),
-        fullscreen=(self),
-        geolocation=(),
-        gyroscope=(),
-        magnetometer=(),
-        microphone=(),
-        midi=(),
-        navigation-override=(),
-        payment=(),
-        picture-in-picture=(),
-        publickey-credentials-get=(),
-        screen-wake-lock=(),
-        sync-xhr=(),
-        usb=(),
-        web-share=(self),
-        xr-spatial-tracking=()
-    ">
-    <!-- ========== END SECURITY HEADERS ========== -->
     <meta name="apple-mobile-web-app-title" content="Dra. Gabriela Canché">
     <meta name="format-detection" content="telephone=yes">
 
@@ -144,6 +107,24 @@
                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 "opens": "08:30",
                 "closes": "12:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Wednesday", "Thursday"],
+                "opens": "20:00",
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday"],
+                "opens": "15:00",
+                "closes": "21:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday"],
+                "opens": "09:30",
+                "closes": "12:00"
             }
         ],
         "sameAs": [
@@ -286,7 +267,7 @@
                 "name": "¿Qué es un ultrasonido mamario y para qué sirve?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Es un estudio sin radiación que utiliza ondas sonoras en 2D, volumétrico con Doppler color y elastografía para un diagnóstico preciso. Estudiamos las glándulas mamarias para detectar lesiones nodulares sólidas o quísticas, clasificándolas bajo el sistema BIRADS para conocer el riesgo de cáncer de mama. El valor del estudio es de $1,100 pesos."
+                    "text": "Es un estudio sin radiación que utiliza ondas sonoras en 2D con Doppler color y elastografía para un diagnóstico preciso. Estudiamos las glándulas mamarias para detectar lesiones nodulares sólidas o quísticas, clasificándolas bajo el sistema BIRADS para conocer el riesgo de cáncer de mama. El valor del estudio es de $1,100 pesos."
                 }
             },
             {
@@ -294,7 +275,7 @@
                 "name": "¿Qué es el mapeo endometriósico?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Es un estudio especializado para diagnosticar endometriosis peritoneal, ovárica y profunda. Somos una de las únicas especialistas en Mérida que realizan este procedimiento avanzado, utilizando protocolos internacionales y la clasificación ENZIAN para un diagnóstico completo y preciso."
+                    "text": "Es un estudio especializado para diagnosticar endometriosis peritoneal, ovárica y profunda. En Mérida, Yucatán, contamos con la Dra. Gabriela Canché, única radióloga y pionera en este estudio dinámico. Es importante solicitar la preparación necesaria para realizar este procedimiento avanzado, utilizando protocolos internacionales y la clasificación ENZIAN para un diagnóstico completo y preciso."
                 }
             },
             {
@@ -302,7 +283,7 @@
                 "name": "¿Qué incluye el ultrasonido estructural del embarazo?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Realizamos ultrasonidos estructurales del 1er, 2do y 3er trimestre con tecnología 5D HD Live. Incluye tamizaje de riesgo genético (Síndrome de Down, trisomías), detección de malformaciones, riesgo de preeclampsia y seguimiento del desarrollo fetal. Utilizamos protocolos de Medicine Fetal Foundation."
+                    "text": "Realizamos ultrasonidos estructurales del 1er, 2do y 3er trimestre con tecnología 5D HD Live. De acuerdo a cada trimestre valoramos Síndromes Genéticos (Síndrome de Down, trisomías 18/13), malformaciones fetales y Riesgo de Preeclampsia. Adicional se valora placenta, líquido y cordón umbilical. El sexo del bebé puede visualizarse a partir de la semana 16, sin embargo los tubérculos genitales maduran y dan una mayor certeza a partir de la semana 18. Utilizamos protocolos de Medicine Fetal Foundation."
                 }
             },
             {
@@ -371,7 +352,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 
 <body>
@@ -546,7 +527,7 @@
     <section class="section section-alt" id="servicios" style="padding-top: 10px;">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Servicios</span>
+                <span class="section-label">Servicio</span>
                 <h2 class="section-title">Especialidades en Diagnóstico por Imágen</h2>
                 <p class="section-description">
                     Estudios de ultrasonido con tecnología de gama alta, Inteligencia Artificial y protocolos
@@ -619,7 +600,7 @@
                         <li><i class="fas fa-check"></i> Doppler fetal/Restricción del crecimiento</li>
                         <li><i class="fas fa-check"></i> Ultrasonidos 5D HD LIVE ( Baby Selfie 5D)</li>
                         <li style="color: var(--color-primary); font-weight: 700;"><i class="fas fa-check"></i>
-                            Protocolos Fetal Fetal Medicine Foundation y Medicine Fetal
+                            Protocolos Fetal Medicine Foundation y Medicine Fetal
                             Barcelona</li>
                     </ul>
                 </div>
@@ -782,7 +763,7 @@
                         <div class="oncology-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
                         </div>
-                        <h3>Curso de imágen mamaria</h3>
+                        <h3>Curso de Imágen Mamaria Multimodalidad</h3>
                     </div>
                     <p class="oncology-text">
                         Mi práctica se distingue por el uso de metodología avanzada para el diagnóstico mamario. Cuento
@@ -1240,8 +1221,13 @@
             <div class="locations-grid">
                 <div class="location-card">
                     <div class="location-header">
-                        <h3>Ultrasonido Biogamma</h3>
-                        <p>Francisco de Montejo</p>
+                        <div class="location-header-content">
+                            <div>
+                                <h3>Ultrasonido Biogamma</h3>
+                                <p>Francisco de Montejo</p>
+                            </div>
+                            <img src="./recursos/biogamma_logo_new.png" alt="Logo Biogamma" class="card-location-logo">
+                        </div>
                     </div>
                     <div class="location-body">
                         <div class="location-info">
@@ -1280,8 +1266,14 @@
 
                 <div class="location-card">
                     <div class="location-header">
-                        <h3>Ultrasonido Polígono</h3>
-                        <p>Zona Polígono</p>
+                        <div class="location-header-content">
+                            <div>
+                                <h3>Ultrasonido Polígono</h3>
+                                <p>Zona Polígono</p>
+                            </div>
+                            <img src="./recursos/ultrasonidoPoligonoLogo.png" alt="Logo Polígono"
+                                class="card-location-logo">
+                        </div>
                     </div>
                     <div class="location-body">
                         <div class="location-info">
@@ -1290,7 +1282,8 @@
                                 <div>
                                     <strong>Horarios</strong>
                                     Sábados: 3:00 PM - 9:00 PM<br>
-                                    Lunes, Miércoles y Jueves: 8:00 PM - 10:00 PM
+                                    Lunes, Miércoles y Jueves: 8:00 PM - 10:00 PM<br>
+                                    Domingo: 9:30 AM - 12:00 PM (previa cita)
                                 </div>
                             </div>
                             <div class="location-item">
@@ -1337,7 +1330,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Es un estudio sin radiación que utiliza ondas sonoras en 2D, volumétrico con Doppler color y
+                            Es un estudio sin radiación que utiliza ondas sonoras en 2D con Doppler color y
                             elastografía para un diagnóstico preciso. Estudiamos las glándulas mamarias para detectar
                             lesiones
                             nodulares sólidas o quísticas, clasificándolas bajo el sistema BIRADS para conocer el riesgo
@@ -1355,9 +1348,10 @@
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             Es un estudio especializado para diagnosticar endometriosis peritoneal, ovárica y profunda.
-                            Somos una de las únicas dos especialistas en Mérida que realizan este procedimiento
-                            avanzado,
-                            utilizando protocolos internacionales para un diagnóstico completo y preciso.
+                            En Mérida, Yucatán, contamos con la Dra. Gabriela Canché, única radióloga y pionera en este
+                            estudio dinámico. Es importante solicitar la preparación necesaria para realizar este
+                            procedimiento avanzado, utilizando protocolos internacionales para un diagnóstico completo y
+                            preciso.
                         </div>
                     </div>
                 </div>
@@ -1384,11 +1378,13 @@
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             Realizamos ultrasonidos estructurales del 1er, 2do y 3er trimestre con tecnología 5D HD
-                            Live.
-                            Incluye tamizaje de riesgo genético (Síndrome de Down, trisomías), detección de
-                            malformaciones,
-                            riesgo de preeclampsia y seguimiento del desarrollo fetal. Utilizamos protocolos de Medicine
-                            Fetal Foundation. El valor es de $1,300 pesos (efectivo) o $1,400 pesos (tarjeta).
+                            Live. De acuerdo a cada trimestre valoramos Síndromes Genéticos (Síndrome de Down,
+                            trisomías 18/13), malformaciones fetales y Riesgo de Preeclampsia. Adicional se valora
+                            placenta, líquido y cordón umbilical.<br><br>
+                            <strong>Sobre el Sexo del Bebé:</strong> Se puede visualizar a partir de la semana 16; sin
+                            embargo, los tubérculos genitales maduran y dan una mayor certeza a partir de la semana 18.
+                            Utilizamos protocolos de Medicine Fetal Foundation. El valor es de $1,300 pesos (efectivo) o
+                            $1,400 pesos (tarjeta).
                         </div>
                     </div>
                 </div>
