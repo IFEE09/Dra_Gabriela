@@ -163,8 +163,8 @@ a {
 /* Floating Buttons */
 .floating-buttons {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: max(30px, env(safe-area-inset-bottom, 0px));
+    right: max(30px, env(safe-area-inset-right, 0px));
     display: flex;
     flex-direction: row !important;
     /* Force side-by-side */
@@ -2228,7 +2228,7 @@ a {
 /* New Special Grid for 'Why Choose Me' inside section header */
 .why-choose-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
     margin: 40px 0 20px;
     /* Reduced bottom margin to bring next section closer */
@@ -2770,6 +2770,39 @@ a {
     margin: 0 auto 40px;
 }
 
+.specialist-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.specialist-intro {
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: var(--color-primary);
+    line-height: 1.5;
+    padding: 0 8px;
+}
+
+.cta-banner--compact {
+    margin-bottom: 0;
+}
+
+.cta-phones--compact {
+    margin-bottom: 0;
+}
+
+.btn--on-accent {
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+section[id] {
+    scroll-margin-top: 88px;
+}
+
 .section-title--light {
     color: #000;
     font-weight: 400;
@@ -2866,7 +2899,7 @@ a {
    ========================================= */
 .collage-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: 20px;
     align-items: center;
 }
@@ -2911,35 +2944,49 @@ a {
     border-radius: 12px;
 }
 
-/* Efecto pulsar en borde — suave */
+/* Efecto pulsar en borde */
 @keyframes collageBorderPulse {
     0%, 100% {
-        border-color: rgba(196, 146, 177, 0.42);
-        box-shadow: 0 6px 18px rgba(139, 90, 107, 0.08),
-            0 0 0 0 rgba(196, 146, 177, 0.22);
+        border-color: rgba(196, 146, 177, 0.7);
+        box-shadow: 0 8px 22px rgba(139, 90, 107, 0.12),
+            0 0 0 0 rgba(196, 146, 177, 0.5);
     }
 
     70% {
-        border-color: rgba(196, 146, 177, 0.32);
-        box-shadow: 0 6px 18px rgba(139, 90, 107, 0.08),
-            0 0 0 5px rgba(196, 146, 177, 0);
+        border-color: rgba(196, 146, 177, 0.45);
+        box-shadow: 0 8px 22px rgba(139, 90, 107, 0.12),
+            0 0 0 9px rgba(196, 146, 177, 0);
     }
 }
 
 @keyframes collageRingRipple {
     0% {
         transform: scale(1);
-        opacity: 0.28;
+        opacity: 0.55;
     }
 
     100% {
-        transform: scale(1.04);
+        transform: scale(1.08);
         opacity: 0;
     }
 }
 
+@keyframes collageBorderPulseMobile {
+    0%, 100% {
+        border-color: rgba(196, 146, 177, 0.58);
+        box-shadow: 0 4px 14px rgba(139, 90, 107, 0.1),
+            0 0 0 0 rgba(196, 146, 177, 0.38);
+    }
+
+    70% {
+        border-color: rgba(196, 146, 177, 0.42);
+        box-shadow: 0 4px 14px rgba(139, 90, 107, 0.1),
+            0 0 0 5px rgba(196, 146, 177, 0);
+    }
+}
+
 .pulse-effect {
-    animation: collageBorderPulse 3.6s infinite ease-out;
+    animation: collageBorderPulse 3s infinite ease-out;
 }
 
 .delay-1 { animation-delay: 0s; }
@@ -2949,7 +2996,7 @@ a {
 
 .collage-item--medical {
     background: #0a0a0a;
-    border: 1px solid rgba(196, 146, 177, 0.4);
+    border: 2px solid rgba(196, 146, 177, 0.55);
     padding: 0;
     cursor: pointer;
     font: inherit;
@@ -2960,12 +3007,12 @@ a {
 .collage-item--medical::before {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: inherit;
-    border: 1px solid rgba(196, 146, 177, 0.35);
+    border: 2px solid rgba(196, 146, 177, 0.5);
     pointer-events: none;
     z-index: 2;
-    animation: collageRingRipple 3.6s infinite ease-out;
+    animation: collageRingRipple 3s infinite ease-out;
 }
 
 .collage-item--medical.delay-1::before { animation-delay: 0s; }
@@ -2993,9 +3040,9 @@ a {
 
     .collage-item--medical:hover {
         animation-play-state: paused;
-        border-color: rgba(196, 146, 177, 0.65);
-        box-shadow: 0 10px 26px rgba(139, 90, 107, 0.16),
-            0 0 0 2px rgba(196, 146, 177, 0.12);
+        border-color: rgba(196, 146, 177, 0.85);
+        box-shadow: 0 12px 28px rgba(139, 90, 107, 0.2),
+            0 0 0 3px rgba(196, 146, 177, 0.2);
     }
 
     .collage-item--medical:hover::before {
@@ -3020,6 +3067,46 @@ a {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         margin-bottom: 24px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-collage .collage-item--medical::before {
+        display: none;
+    }
+
+    .hero-collage .collage-item--medical.pulse-effect {
+        animation: collageBorderPulseMobile 3s infinite ease-out;
+    }
+
+    .hero-collage .collage-item--medical {
+        border-width: 2px;
+        border-color: rgba(196, 146, 177, 0.5);
+    }
+
+    .hero-collage .collage-item:hover {
+        transform: scale(1.02) !important;
+    }
+
+    .page-mapeo main {
+        padding-bottom: 96px;
+    }
+
+    .aeo-takeaway {
+        padding: 16px 18px;
+        margin-bottom: 24px;
+    }
+
+    .cta-banner {
+        padding: 32px 18px;
+    }
+
+    .cta-banner h2 {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
+    }
+
+    .cta-banner p {
+        font-size: 1rem;
     }
 }
 
@@ -3030,6 +3117,44 @@ a {
 
     .hero-collage .collage-item {
         border-radius: 8px;
+    }
+
+    .hero-collage .collage-item--medical img {
+        border-radius: 7px;
+    }
+
+    .header-content {
+        height: 64px;
+    }
+
+    .page-mapeo .hero--compact {
+        padding-top: 84px;
+    }
+
+    .hero-lead {
+        margin-bottom: 20px;
+    }
+
+    .preparation-card {
+        padding: 16px;
+    }
+
+    .specialist-intro {
+        margin-bottom: 20px;
+    }
+
+    .expert-card {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .expert-card i {
+        font-size: 20px;
+    }
+
+    .floating-buttons {
+        bottom: max(16px, env(safe-area-inset-bottom, 0px));
+        right: max(16px, env(safe-area-inset-right, 0px));
     }
 }
 
