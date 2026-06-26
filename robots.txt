@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /recursos/
+Allow: /galeria/
+Allow: /*.css
+Allow: /*.js
+
+Sitemap: https://dragabrielacanche.com/sitemap.xml
