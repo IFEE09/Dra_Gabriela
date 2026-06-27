@@ -2693,6 +2693,28 @@ a {
     margin-bottom: 10px;
 }
 
+.mapeo-specialist .specialist-credentials {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.mapeo-specialist .specialist-credentials .credential-item {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.mapeo-specialist .specialist-credentials .credential-item::after {
+    content: none;
+}
+
+.mapeo-specialist .specialist-credentials .credential-item.name {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
 .specialist-details {
     font-weight: 700;
     color: var(--color-text);
@@ -2869,6 +2891,13 @@ section[id] {
     margin-top: 2px;
 }
 
+.aeo-takeaway a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .hero-location-badge {
     font-size: 0.95rem;
     color: var(--color-primary);
@@ -2888,19 +2917,34 @@ section[id] {
 .hero-quick-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 8px;
 }
 
 .hero-quick-links a {
-    color: var(--color-primary);
+    color: #d4a800;
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-decoration-color: rgba(212, 168, 0, 0.65);
+    text-underline-offset: 5px;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    transition: color 0.2s ease;
+}
+
+.hero-quick-links a:hover {
+    color: #b8860b;
+    text-decoration-color: #b8860b;
+}
+
+@media (min-width: 768px) {
+    .hero-quick-links {
+        font-size: 1.35rem;
+        gap: 32px;
+    }
 }
 /* =========================================
    COLLAGE ANIMADO
