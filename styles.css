@@ -3411,3 +3411,20 @@ section[id] {
         opacity: 1 !important;
     }
 }
+
+
+/* Subtítulo del hero con nombre de la doctora (SEO H1 reestructurado) */
+.hero-subtitle--name {
+    font-family: var(--font-body, 'Poppins', sans-serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-text, #4a4a4a);
+    margin-bottom: 24px;
+    max-width: 540px;
+}
+@media (max-width: 768px) {
+    .hero-subtitle--name {
+        font-size: 0.95rem;
+    }
+}

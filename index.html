@@ -152,8 +152,16 @@
             {
                 "@type": "MedicalProcedure",
                 "name": "Mapeo de Endometriosis",
-                "description": "Diagnóstico especializado de endometriosis peritoneal, ovárica y profunda con clasificación ENZIAN.",
-                "procedureType": "http://schema.org/DiagnosticProcedure"
+                "alternateName": ["Mapeo de endometriosis profunda", "Ultrasonido para endometriosis", "Mapeo endometriósico ENZIAN"],
+                "description": "Mapeo de endometriosis por ultrasonido especializado en Mérida: diagnóstico de endometriosis peritoneal, ovárica y profunda con clasificación ENZIAN, sin cirugía. Realizado por la única radióloga certificada en mapeo de endometriosis de la ciudad.",
+                "procedureType": "http://schema.org/DiagnosticProcedure",
+                "howPerformed": "Ultrasonido ginecológico transvaginal avanzado con protocolo de mapeo de endometriosis ENZIAN.",
+                "bodyLocation": "Pelvis, ovarios, útero, tabique rectovaginal",
+                "relevantSpecialty": {
+                    "@type": "MedicalSpecialty",
+                    "name": "Radiología ginecológica"
+                },
+                "url": "https://dragabrielacanche.com/mapeo-endometriosis.html"
             },
             {
                 "@type": "MedicalProcedure",
@@ -384,7 +392,7 @@
     <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css"></noscript>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2.0">
+    <link rel="stylesheet" href="styles.css?v=2.1">
 
 </head>
 
@@ -442,7 +450,7 @@
                 <div class="hero-image">
                     <div class="hero-image-wrapper">
                         <img src="./recursos/fotodra.jpeg"
-                            alt="Dra. Gabriela Canché Escalante - Radióloga especialista en ultrasonido y mamografía en Mérida"
+                            alt="Dra. Gabriela Canché Escalante, radióloga especialista en Mapeo de Endometriosis y ultrasonido ginecológico en Mérida"
                             width="1067" height="1600" fetchpriority="high" loading="eager">
                     </div>
                 </div>
@@ -450,7 +458,8 @@
                     <div class="hero-location-badge">
                         <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Mérida, Yucatán
                     </div>
-                    <h1 class="hero-title">Dra. Gabriela B. <span>Canché Escalante</span></h1>
+                    <h1 class="hero-title">Mapeo de <span>Endometriosis</span> en Mérida</h1>
+                    <p class="hero-subtitle hero-subtitle--name">Dra. Gabriela B. Canché Escalante · Radióloga especialista en endometriosis y ultrasonido ginecológico</p>
                     <aside class="aeo-takeaway" aria-label="Resumen de servicios">
                         <p class="aeo-takeaway__title">En resumen</p>
                         <ul>
@@ -600,7 +609,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Servicio</span>
-                <h2 class="section-title">¿Qué estudios de imagen ofrece la Dra. Gabriela Canché?</h2>
+                <h2 class="section-title">Mapeo de Endometriosis y estudios de imagen de la Dra. Gabriela Canché</h2>
                 <p class="section-description">
                     Ofrece ultrasonido ginecológico, mapeo de endometriosis, mamografía, ecografía obstétrica y procedimientos especializados con tecnología de gama alta e inteligencia artificial.
                 </p>
@@ -638,6 +647,7 @@
                         <li style="color: var(--color-primary); font-weight: 700;"><i class="fas fa-check"></i> Única
                             mujer radióloga en Mérida realizando este estudio</li>
                     </ul>
+                    <a href="mapeo-endometriosis.html" class="service-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--color-primary); font-weight: 700; text-decoration: none;">Conoce más sobre el Mapeo de Endometriosis <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Imagen Mamaria -->
@@ -1574,7 +1584,7 @@
     <script src="security.js" defer></script>
 
     <!-- Custom JS -->
-    <script src="script.js?v=2.0" defer></script>
+    <script src="script.js?v=2.1" defer></script>
 </body>
 
 </html>
