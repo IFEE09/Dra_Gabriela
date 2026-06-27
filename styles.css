@@ -2480,14 +2480,14 @@ a {
 
 /* ── Mapeo Endometriosis Page ── */
 .page-mapeo .hero--compact {
-    padding-top: 100px;
+    padding-top: 48px;
     min-height: auto;
     padding-bottom: 40px;
 }
 
 @media (min-width: 768px) {
     .page-mapeo .hero--compact {
-        padding-top: 140px;
+        padding-top: 60px;
         padding-bottom: 60px;
     }
 }
@@ -3152,7 +3152,7 @@ section[id] {
     }
 
     .page-mapeo .hero--compact {
-        padding-top: 84px;
+        padding-top: 40px;
     }
 
     .hero-lead {
@@ -3205,6 +3205,310 @@ section[id] {
     max-width: 720px;
     line-height: 1.5;
     cursor: zoom-out;
+}
+
+/* ── Hero Slider (3 categorías) ── */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    padding-top: 72px;
+    background: var(--color-primary-dark);
+    overflow: hidden;
+}
+
+.hero-slider__viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.hero-slider__track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.hero-slider__slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+}
+
+.hero-slider__panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: min(72vh, 560px);
+}
+
+@media (min-width: 768px) {
+    .hero-slider__panel {
+        grid-template-columns: 1fr 1fr;
+        min-height: min(72vh, 580px);
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__panel {
+        grid-template-columns: 0.92fr 1.08fr;
+        min-height: min(74vh, 600px);
+    }
+}
+
+.hero-slider__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px 24px 48px;
+    background: linear-gradient(145deg, #9d6275 0%, var(--color-primary) 35%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .hero-slider__content {
+        padding: 48px 40px 56px  max(24px, calc((100vw - 1200px) / 2 + 24px));
+    }
+}
+
+.hero-slider__eyebrow {
+    font-size: clamp(0.95rem, 2.2vw, 1.125rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.hero-slider__highlight {
+    color: #f0c4d8;
+    font-weight: 700;
+}
+
+.hero-slider__heading {
+    font-family: var(--font-body);
+    font-size: clamp(1.5rem, 4.2vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.hero-slider__heading-mark {
+    display: inline-block;
+    background: rgba(143, 166, 209, 0.52);
+    padding: 4px 10px;
+    line-height: 1.3;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.hero-slider__heading strong {
+    font-weight: 800;
+}
+
+.hero-slider__text {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+    max-width: 480px;
+    line-height: 1.55;
+}
+
+.hero-slider__cta {
+    margin-top: 8px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hero-slider__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.hero-slider__media {
+    position: relative;
+    min-height: 240px;
+    overflow: hidden;
+    background: #a67c89;
+}
+
+@media (min-width: 768px) {
+    .hero-slider__media {
+        min-height: auto;
+    }
+
+    .hero-slider__media::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, var(--color-primary-dark) 0%, rgba(94, 56, 68, 0.55) 18%, transparent 42%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media::before {
+        background: linear-gradient(to right, var(--color-primary) 0%, rgba(139, 90, 107, 0.35) 14%, transparent 30%);
+    }
+}
+
+.hero-slider__media img,
+.hero-slider__media picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hero-slider__media picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slider__media img {
+    object-fit: cover;
+    object-position: right center;
+}
+
+/* Slide 1 — imagen completa sin recorte */
+.hero-slider__slide--mapeo .hero-slider__media {
+    background: #b08896;
+}
+
+@media (min-width: 768px) {
+    .hero-slider__slide--mapeo .hero-slider__media {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-end;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media picture {
+        width: 100%;
+        height: 100%;
+        justify-content: flex-end;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media img {
+        object-fit: contain;
+        object-position: right center;
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+    }
+}
+
+.hero-slider__dots {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 5;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-slider__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    flex-shrink: 0;
+}
+
+.hero-slider__dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-slider__dot.is-active {
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0 0 0 3px var(--color-white);
+}
+
+@media (max-width: 767px) {
+    .hero-slider__panel {
+        min-height: auto;
+    }
+
+    .hero-slider__content {
+        padding-bottom: 56px;
+    }
+
+    .hero-slider__media {
+        min-height: 220px;
+        max-height: 280px;
+    }
+
+    /* Slide 1 — imagen vertical completa con texto superpuesto */
+    .hero-slider__slide--mapeo .hero-slider__panel {
+        position: relative;
+        width: 100%;
+        height: min(calc(100vw * 1024 / 576), 92vh);
+        min-height: 520px;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media {
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        max-height: none;
+        z-index: 0;
+        background: #b08896;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media picture {
+        width: 100%;
+        height: 100%;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__content {
+        position: relative;
+        z-index: 2;
+        min-height: 0;
+        height: 100%;
+        justify-content: flex-start;
+        padding-top: 24px;
+        padding-bottom: 64px;
+        background: transparent;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media img {
+        object-fit: contain;
+        object-position: center top;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-slider__dots {
+        bottom: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slider__track {
+        transition: none;
+    }
 }
 
 

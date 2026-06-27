@@ -409,7 +409,7 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2.2">
+    <link rel="stylesheet" href="styles.css?v=2.8">
 
 </head>
 
@@ -455,8 +455,86 @@
 
     <main>
 
+    <!-- Hero Slider — 3 categorías -->
+    <section class="hero-slider" id="inicio" aria-label="Categorías de mapeo de endometriosis" aria-roledescription="carrusel">
+        <div class="hero-slider__viewport">
+            <div class="hero-slider__track" id="heroSliderTrack">
+                <article class="hero-slider__slide hero-slider__slide--mapeo is-active" data-slide="0" aria-hidden="false">
+                    <div class="hero-slider__panel">
+                        <div class="hero-slider__content">
+                            <p class="hero-slider__eyebrow"><span class="hero-slider__highlight">1er</span> centro especializado en</p>
+                            <h2 class="hero-slider__heading">
+                                <span class="hero-slider__heading-mark">Diagnóstico de Endometriosis</span>
+                                <span class="hero-slider__heading-mark">por mapeo endometriósico</span>
+                            </h2>
+                            <p class="hero-slider__text">Protocolo internacional ENZIAN sin cirugía en Mérida, Yucatán.</p>
+                            <a href="https://wa.me/529992010898?text=Hola!%20quiero%20agendar%20una%20cita%20para%20Mapeo%20de%20Endometriosis%20Profunda."
+                                target="_blank" rel="noopener" class="btn btn-primary hero-slider__cta">
+                                <i class="fab fa-whatsapp"></i> AGENDAR CITA
+                            </a>
+                        </div>
+                        <div class="hero-slider__media">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="./recursos/hero/slider-categoria-mapeo-mobile.png">
+                                <img src="./recursos/hero/slider-categoria-mapeo.png"
+                                    alt="Manos sosteniendo una peonía — cuidado especializado en diagnóstico de endometriosis"
+                                    width="1024" height="576" fetchpriority="high">
+                            </picture>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hero-slider__slide" data-slide="1" aria-hidden="true">
+                    <div class="hero-slider__panel">
+                        <div class="hero-slider__content">
+                            <h2 class="hero-slider__heading">
+                                <span class="hero-slider__heading-mark">Un diagnóstico ecográfico acertado</span>
+                                <span class="hero-slider__heading-mark">es el inicio para un buen tratamiento</span>
+                            </h2>
+                            <a href="https://wa.me/529992010898?text=Hola!%20quiero%20agendar%20un%20Mapeo%20de%20Endometriosis."
+                                target="_blank" rel="noopener" class="btn btn-primary hero-slider__cta">
+                                <i class="fab fa-whatsapp"></i> AGENDAR CITA
+                            </a>
+                        </div>
+                        <div class="hero-slider__media">
+                            <img src="./recursos/hero/slider-categoria-especialista.jpeg"
+                                alt="Dra. Gabriela Canché — especialista en mapeo de endometriosis en Mérida"
+                                width="1067" height="1600" loading="lazy">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hero-slider__slide" data-slide="2" aria-hidden="true">
+                    <div class="hero-slider__panel">
+                        <div class="hero-slider__content">
+                            <h2 class="hero-slider__heading">
+                                <span class="hero-slider__heading-mark">Evita cirugías innecesarias</span>
+                                <span class="hero-slider__heading-mark">con un diagnóstico ecográfico acertado</span>
+                            </h2>
+                            <a href="https://wa.me/529992010898?text=Hola!%20quiero%20información%20sobre%20ecografía%20ginecológica%20avanzada."
+                                target="_blank" rel="noopener" class="btn btn-primary hero-slider__cta">
+                                <i class="fab fa-whatsapp"></i> AGENDAR CITA
+                            </a>
+                        </div>
+                        <div class="hero-slider__media">
+                            <img src="./recursos/hero/slider-categoria-ultrasonido.png"
+                                alt="Ultrasonido 2D y 3D para mapeo de endometriosis"
+                                width="1024" height="734" loading="lazy">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div class="hero-slider__dots" role="tablist" aria-label="Seleccionar categoría">
+            <button type="button" class="hero-slider__dot is-active" role="tab" aria-selected="true" aria-label="Diagnóstico de endometriosis por mapeo endometriósico" data-slide="0"></button>
+            <button type="button" class="hero-slider__dot" role="tab" aria-selected="false" aria-label="Un diagnóstico ecográfico acertado es el inicio para un buen tratamiento" data-slide="1"></button>
+            <button type="button" class="hero-slider__dot" role="tab" aria-selected="false" aria-label="Evita cirugías innecesarias con un diagnóstico ecográfico acertado" data-slide="2"></button>
+        </div>
+    </section>
+
     <!-- Hero Section -->
-    <section class="hero hero--compact" id="inicio">
+    <section class="hero hero--compact" id="contenido-principal">
         <div class="container">
             <div class="hero-badge-wrap">
                 <div class="hero-badge">
@@ -1242,7 +1320,7 @@
     <script src="security.js" defer></script>
 
     <!-- Custom JS -->
-    <script src="script.js?v=2.1" defer></script>
+    <script src="script.js?v=2.2" defer></script>
 </body>
 
 </html>

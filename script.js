@@ -440,3 +440,85 @@ if (lightbox && lightboxImg) {
         }
     });
 }
+
+// Hero Slider — 3 categorías (mapeo endometriosis)
+const heroSlider = document.getElementById('heroSliderTrack');
+if (heroSlider) {
+    const slides = heroSlider.querySelectorAll('.hero-slider__slide');
+    const dots = document.querySelectorAll('.hero-slider__dot');
+    const total = slides.length;
+    let current = 0;
+    let autoplayTimer = null;
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const autoplayMs = 6500;
+
+    const goToSlide = (index) => {
+        if (total === 0) return;
+        current = (index + total) % total;
+        heroSlider.style.transform = `translateX(-${current * 100}%)`;
+
+        slides.forEach((slide, i) => {
+            const isActive = i === current;
+            slide.classList.toggle('is-active', isActive);
+            slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        dots.forEach((dot, i) => {
+            const isActive = i === current;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    };
+
+    const nextSlide = () => goToSlide(current + 1);
+    const prevSlide = () => goToSlide(current - 1);
+
+    const stopAutoplay = () => {
+        if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+        }
+    };
+
+    const startAutoplay = () => {
+        stopAutoplay();
+        if (prefersReducedMotion || total <= 1) return;
+        autoplayTimer = setInterval(nextSlide, autoplayMs);
+    };
+
+    dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+            goToSlide(Number(dot.dataset.slide));
+            startAutoplay();
+        });
+    });
+
+    const sliderSection = heroSlider.closest('.hero-slider');
+    if (sliderSection) {
+        sliderSection.addEventListener('mouseenter', stopAutoplay);
+        sliderSection.addEventListener('mouseleave', startAutoplay);
+
+        sliderSection.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchDeltaX = 0;
+            stopAutoplay();
+        }, { passive: true });
+
+        sliderSection.addEventListener('touchmove', (e) => {
+            touchDeltaX = e.changedTouches[0].screenX - touchStartX;
+        }, { passive: true });
+
+        sliderSection.addEventListener('touchend', () => {
+            if (Math.abs(touchDeltaX) > 50) {
+                if (touchDeltaX < 0) nextSlide();
+                else prevSlide();
+            }
+            startAutoplay();
+        }, { passive: true });
+    }
+
+    goToSlide(0);
+    startAutoplay();
+}
