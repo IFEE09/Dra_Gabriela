@@ -3182,3 +3182,232 @@ section[id] {
     line-height: 1.5;
     cursor: zoom-out;
 }
+
+
+/* ============================================================
+   MEJORAS ESTÉTICAS VANGUARDISTAS 2026
+   Animaciones scroll · Glassmorphism · Micro-interacciones
+   Hero mejorado · Contadores · Lightbox refinado
+   ============================================================ */
+
+/* --- 1. Animaciones de aparición al hacer scroll (reveal) --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variantes de dirección */
+.reveal-on-scroll.reveal-left  { transform: translateX(-40px); }
+.reveal-on-scroll.reveal-right { transform: translateX(40px); }
+.reveal-on-scroll.reveal-left.is-visible,
+.reveal-on-scroll.reveal-right.is-visible { transform: translateX(0); }
+
+/* Escalonado suave para grupos de tarjetas */
+.reveal-on-scroll.delay-1 { transition-delay: 0.08s; }
+.reveal-on-scroll.delay-2 { transition-delay: 0.16s; }
+.reveal-on-scroll.delay-3 { transition-delay: 0.24s; }
+.reveal-on-scroll.delay-4 { transition-delay: 0.32s; }
+
+/* --- 2. Glassmorphism en tarjeta "En resumen" y badges --- */
+.aeo-takeaway {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 8px 32px rgba(139, 90, 107, 0.12);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.aeo-takeaway:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(139, 90, 107, 0.18);
+}
+
+.hero-location-badge {
+    background: rgba(139, 90, 107, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 90, 107, 0.18);
+    box-shadow: 0 4px 16px rgba(139, 90, 107, 0.10);
+}
+
+.hero-badge {
+    background: rgba(232, 201, 168, 0.55);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.hero-badge:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 26px rgba(212, 165, 116, 0.30);
+}
+
+/* --- 3. Hero mejorado: aura de color y título con degradado --- */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(139, 90, 107, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-title span {
+    background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-accent-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-primary); /* fallback */
+}
+
+.hero-image-wrapper {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+.hero-image-wrapper:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 30px 60px rgba(139, 90, 107, 0.22);
+}
+
+/* --- 4. Micro-interacciones en tarjetas y botones --- */
+.service-card,
+.expertise-card,
+.differentiator-card,
+.location-card,
+.testimonial-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+}
+
+.service-card:hover,
+.expertise-card:hover,
+.differentiator-card:hover,
+.location-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 44px rgba(139, 90, 107, 0.16);
+}
+
+/* Botones: brillo deslizante + elevación */
+.btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+    z-index: -1;
+}
+
+.btn:hover::after { left: 130%; }
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(139, 90, 107, 0.28);
+}
+
+/* --- 5. Contadores / estadísticas animadas --- */
+.stats-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 48px 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 28px 18px;
+    border-radius: var(--radius-lg, 20px);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 28px rgba(139, 90, 107, 0.10);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(139, 90, 107, 0.18);
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-accent-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .stats-band { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 32px 0; }
+}
+
+/* --- 6. Lightbox refinado: entrada suave --- */
+.lightbox { transition: opacity 0.35s ease, visibility 0.35s ease; }
+.lightbox .lightbox-content {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+    transform: scale(0.94);
+    opacity: 0;
+}
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --- 7. Respeto a usuarios con movimiento reducido --- */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    .aeo-takeaway,
+    .hero-image-wrapper,
+    .service-card,
+    .expertise-card,
+    .differentiator-card,
+    .location-card,
+    .btn,
+    .stat-card,
+    .lightbox .lightbox-content {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}

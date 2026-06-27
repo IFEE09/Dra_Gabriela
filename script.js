@@ -82,31 +82,76 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 const initScrollAnimations = () => {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.service-card, .expertise-card, .testimonial-card, .differentiator-card, .credentials-box, .location-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    // Selectores existentes + secciones y títulos para un reveal más amplio
+    const targets = document.querySelectorAll(
+        '.service-card, .expertise-card, .testimonial-card, .differentiator-card, .credentials-box, .location-card, .section-header, .section-title, .stat-card, .aeo-takeaway, [data-reveal]'
+    );
+    targets.forEach((el, i) => {
+        el.classList.add('reveal-on-scroll');
+        // Escalonado por grupos de 4 para tarjetas contiguas
+        const d = (i % 4) + 1;
+        el.classList.add('delay-' + d);
         observer.observe(el);
     });
 };
 
+// Contadores animados (estadísticas)
+const initCounters = () => {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    if (!counters.length) return;
+
+    const animateCount = (el) => {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        const prefix = el.getAttribute('data-prefix') || '';
+        const duration = 1600;
+        const start = performance.now();
+        const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            // easeOutCubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.floor(eased * target);
+            el.textContent = prefix + value.toLocaleString('es-MX') + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = prefix + target.toLocaleString('es-MX') + suffix;
+        };
+        requestAnimationFrame(step);
+    };
+
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCount(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => obs.observe(c));
+};
+
+const initVisualEnhancements = () => {
+    initScrollAnimations();
+    initCounters();
+};
+
 if ('requestIdleCallback' in window) {
-    requestIdleCallback(initScrollAnimations, { timeout: 2000 });
+    requestIdleCallback(initVisualEnhancements, { timeout: 2000 });
 } else {
-    setTimeout(initScrollAnimations, 1);
+    setTimeout(initVisualEnhancements, 1);
 }
 
 // Modal Logic
