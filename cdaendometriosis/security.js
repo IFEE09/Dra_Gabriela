@@ -1,6 +1,6 @@
 /**
  * ========================================================
- * SECURITY MODULE - Dra. Gabriela Canché Website
+ * SECURITY MODULE - Dra. Gabriela B. Canché Escalante Website
  * ========================================================
  * Protecciones contra:
  * - DDoS (Rate Limiting en cliente)
@@ -368,7 +368,7 @@
     //         document.addEventListener('copy', (e) => {
     //             // Opcional: Agregar marca de agua al copiar
     //             const selection = document.getSelection().toString();
-    //             e.clipboardData.setData('text/plain', selection + '\n\n© Dra. Gabriela Canché - dragabrielacanche.com');
+    //             e.clipboardData.setData('text/plain', selection + '\n\n© Dra. Gabriela B. Canché Escalante - dragabrielacanche.com');
     //             e.preventDefault();
     //         });
     //     }

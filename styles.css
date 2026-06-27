@@ -3756,3 +3756,171 @@ section[id] {
         font-size: 0.95rem;
     }
 }
+
+/* Servicios dolor pélvico crónico — colores endometriosis */
+.pelvic-services {
+    --endo-yellow: #f5d547;
+    --endo-yellow-soft: #fef9e7;
+    --endo-mauve: #8b5a6b;
+    --endo-mauve-dark: #6e4554;
+    --endo-mauve-soft: #f3e8ec;
+    position: relative;
+    padding: 48px 0 56px;
+    background: linear-gradient(165deg, var(--endo-yellow-soft) 0%, #fdf8f3 35%, var(--endo-mauve-soft) 100%);
+    overflow: hidden;
+}
+
+.pelvic-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--endo-yellow) 0%, var(--endo-mauve) 50%, var(--endo-yellow) 100%);
+}
+
+.pelvic-services::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 213, 71, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.pelvic-services__header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.pelvic-services__ribbon {
+    display: block;
+    width: 48px;
+    height: 8px;
+    margin: 0 auto 16px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--endo-yellow), #ffe566);
+    box-shadow: 0 2px 8px rgba(245, 213, 71, 0.45);
+}
+
+.pelvic-services__label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--endo-mauve);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(139, 90, 107, 0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+}
+
+.pelvic-services__title {
+    font-size: clamp(1.375rem, 3.5vw, 2.125rem);
+    margin-bottom: 12px;
+    color: var(--endo-mauve-dark);
+}
+
+.pelvic-services__title::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--endo-yellow), var(--endo-mauve));
+}
+
+.pelvic-services__desc {
+    max-width: 640px;
+    margin: 16px auto 0;
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+.pelvic-services__grid {
+    position: relative;
+    z-index: 1;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .pelvic-services {
+        padding: 56px 0 64px;
+    }
+
+    .pelvic-services__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+.pelvic-services__card {
+    height: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(139, 90, 107, 0.12);
+    border-top: 3px solid var(--endo-yellow);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    box-shadow: 0 8px 28px rgba(139, 90, 107, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.pelvic-services__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(139, 90, 107, 0.14);
+    border-color: rgba(139, 90, 107, 0.22);
+    border-top-color: var(--endo-mauve);
+}
+
+.pelvic-services__card h3 {
+    font-size: clamp(1.05rem, 2vw, 1.15rem);
+    line-height: 1.35;
+    color: var(--endo-mauve-dark);
+    margin-bottom: 12px;
+}
+
+.pelvic-services__card p {
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.65;
+    font-size: 0.9375rem;
+}
+
+.pelvic-services__icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--endo-mauve-soft) 0%, rgba(245, 213, 71, 0.35) 100%);
+    border: 1px solid rgba(139, 90, 107, 0.15);
+    border-radius: var(--radius-md);
+}
+
+.pelvic-services__icon i {
+    font-size: 22px;
+    color: var(--endo-mauve);
+}
+
+.page-mapeo .pelvic-services + .hero.hero--compact {
+    padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+    .page-mapeo .pelvic-services + .hero.hero--compact {
+        padding-top: 48px;
+    }
+}

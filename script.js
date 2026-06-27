@@ -242,7 +242,7 @@ if (bookingForm) {
         }
 
         // Build WhatsApp message with sanitized data
-        const message = `Hola Dra. Gabriela, me gustaría agendar una cita.%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Servicio:* ${encodeURIComponent(service)}%0A*Teléfono:* ${encodeURIComponent(phone)}%0A*Fecha preferente:* ${encodeURIComponent(date || 'Por definir')}`;
+        const message = `Hola Dra. Gabriela B. Canché Escalante, me gustaría agendar una cita.%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Servicio:* ${encodeURIComponent(service)}%0A*Teléfono:* ${encodeURIComponent(phone)}%0A*Fecha preferente:* ${encodeURIComponent(date || 'Por definir')}`;
 
         const whatsappUrl = `https://wa.me/529992010898?text=${message}`;
 
