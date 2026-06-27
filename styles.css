@@ -2501,9 +2501,17 @@ a {
 .hero-content--centered {
     grid-template-columns: 1fr;
     text-align: center;
-    max-width: 800px;
+    max-width: 960px;
+    width: 100%;
     margin: 0 auto;
     gap: 20px;
+}
+
+.page-mapeo .hero-content--centered .hero-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-lead {
@@ -3053,6 +3061,22 @@ section[id] {
 
 .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.hero-collage.gallery-grid {
+    display: grid;
+    width: 100%;
+    max-width: 920px;
+    margin-inline: auto;
+    margin-bottom: 28px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    justify-content: center;
+}
+
+.hero-collage .gallery-item {
+    aspect-ratio: auto;
+    width: 100%;
 }
 
 .hero-collage {
