@@ -453,6 +453,7 @@ if (heroSlider) {
     let touchDeltaX = 0;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const autoplayMs = 6500;
+    const sliderSection = heroSlider.closest('.hero-slider');
 
     const goToSlide = (index) => {
         if (total === 0) return;
@@ -495,7 +496,19 @@ if (heroSlider) {
         });
     });
 
-    const sliderSection = heroSlider.closest('.hero-slider');
+    const prevBtn = sliderSection?.querySelector('.hero-slider__arrow--prev');
+    const nextBtn = sliderSection?.querySelector('.hero-slider__arrow--next');
+
+    prevBtn?.addEventListener('click', () => {
+        prevSlide();
+        startAutoplay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+        nextSlide();
+        startAutoplay();
+    });
+
     if (sliderSection) {
         sliderSection.addEventListener('mouseenter', stopAutoplay);
         sliderSection.addEventListener('mouseleave', startAutoplay);
