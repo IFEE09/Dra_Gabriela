@@ -3409,7 +3409,7 @@ section[id] {
     object-position: 72% center;
 }
 
-/* Slide 2 — doctora de cuerpo completo a la derecha, degradado mauve a la izquierda */
+/* Slide 2 — collage ecográfico a la derecha, degradado mauve a la izquierda */
 .hero-slider__slide--especialista .hero-slider__panel {
     background: var(--color-primary);
 }
@@ -3421,7 +3421,7 @@ section[id] {
         width: 58%;
         display: flex;
         justify-content: flex-end;
-        align-items: flex-end;
+        align-items: center;
     }
 
     .hero-slider__slide--especialista .hero-slider__media::before {
@@ -3446,9 +3446,9 @@ section[id] {
         width: auto;
         height: 100%;
         object-fit: contain;
-        object-position: right bottom;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 28%, #000 60%);
-        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 28%, #000 60%);
+        object-position: right center;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
     }
 }
 
