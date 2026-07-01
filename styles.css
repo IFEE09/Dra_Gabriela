@@ -3409,32 +3409,36 @@ section[id] {
     object-position: 72% center;
 }
 
-/* Slide 2 — doctora completa a la derecha, fondo mauve detrás del texto */
+/* Slide 2 — doctora de cuerpo completo a la derecha, degradado mauve a la izquierda */
 .hero-slider__slide--especialista .hero-slider__panel {
-    background: var(--color-primary);
+    background: linear-gradient(100deg, #6e4554 0%, var(--color-primary) 40%, #a5798a 72%, #b39a9c 100%);
 }
 
 @media (min-width: 768px) {
     .hero-slider__slide--especialista .hero-slider__media {
         left: auto;
         right: 0;
-        width: 55%;
+        width: 58%;
     }
 
     .hero-slider__slide--especialista .hero-slider__media img {
         object-fit: contain;
         object-position: right bottom;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%);
-        mask-image: linear-gradient(to right, transparent 0%, #000 20%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 30%);
     }
 }
 
 @media (max-width: 767px) {
+    .hero-slider__slide--especialista .hero-slider__panel {
+        background: linear-gradient(170deg, #6e4554 0%, var(--color-primary) 45%, #a5798a 100%);
+    }
+
     .hero-slider__slide--especialista .hero-slider__media img {
         object-fit: contain;
         object-position: center bottom;
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
-        mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
     }
 }
 
