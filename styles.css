@@ -3256,7 +3256,7 @@ section[id] {
     position: relative;
     width: 100%;
     padding-top: 72px;
-    background: var(--color-primary-dark);
+    background: var(--color-primary);
     overflow: hidden;
 }
 
@@ -3290,7 +3290,9 @@ section[id] {
 
     .hero-slider__slide--mapeo .hero-slider__panel {
         grid-template-columns: 0.92fr 1.08fr;
-        min-height: min(74vh, 600px);
+        min-height: unset;
+        height: auto;
+        align-items: stretch;
     }
 }
 
@@ -3301,7 +3303,7 @@ section[id] {
     align-items: flex-start;
     gap: 16px;
     padding: 32px 24px 48px;
-    background: linear-gradient(145deg, #9d6275 0%, var(--color-primary) 35%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     color: var(--color-white);
     text-align: left;
     position: relative;
@@ -3317,13 +3319,13 @@ section[id] {
 .hero-slider__eyebrow {
     font-size: clamp(0.95rem, 2.2vw, 1.125rem);
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--color-white);
     margin: 0;
     line-height: 1.4;
 }
 
 .hero-slider__highlight {
-    color: #f0c4d8;
+    color: var(--color-white);
     font-weight: 700;
 }
 
@@ -3341,12 +3343,11 @@ section[id] {
 }
 
 .hero-slider__heading-mark {
-    display: inline-block;
-    background: rgba(143, 166, 209, 0.52);
-    padding: 4px 10px;
+    display: block;
+    background: none;
+    padding: 0;
     line-height: 1.3;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+    color: var(--color-white);
 }
 
 .hero-slider__heading strong {
@@ -3355,7 +3356,7 @@ section[id] {
 
 .hero-slider__text {
     font-size: clamp(0.9375rem, 2vw, 1.0625rem);
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--color-white);
     margin: 0;
     max-width: 480px;
     line-height: 1.55;
@@ -3420,30 +3421,34 @@ section[id] {
     object-position: right center;
 }
 
-/* Slide 1 — imagen completa sin recorte */
+/* Slide 1 — imagen define la altura del panel; sin overlays */
 .hero-slider__slide--mapeo .hero-slider__media {
-    background: #b08896;
+    background: none;
+    min-height: 0;
+}
+
+.hero-slider__slide--mapeo .hero-slider__media::before {
+    display: none;
 }
 
 @media (min-width: 768px) {
     .hero-slider__slide--mapeo .hero-slider__media {
-        display: flex;
-        align-items: stretch;
-        justify-content: flex-end;
+        display: block;
+        line-height: 0;
     }
 
     .hero-slider__slide--mapeo .hero-slider__media picture {
+        display: block;
         width: 100%;
-        height: 100%;
-        justify-content: flex-end;
+        height: auto;
     }
 
     .hero-slider__slide--mapeo .hero-slider__media img {
-        object-fit: contain;
-        object-position: right center;
-        width: auto;
-        max-width: 100%;
-        height: 100%;
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+        object-position: center;
+        display: block;
     }
 }
 
@@ -3516,7 +3521,7 @@ section[id] {
         min-height: 100%;
         max-height: none;
         z-index: 0;
-        background: #b08896;
+        background: none;
     }
 
     .hero-slider__slide--mapeo .hero-slider__media picture {
