@@ -3832,31 +3832,38 @@ section[id] {
         justify-content: flex-start;
         align-items: flex-start;
         text-align: left;
+        display: flex;
+        flex-direction: column;
         height: auto;
         max-width: 100%;
         padding: 8px 20px 12px;
     }
 
+    .hero-slider__slide--mapeo .hero-slider__cta {
+        order: 1;
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 11px 20px;
+        font-size: 0.8125rem;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__eyebrow {
+        order: 2;
+        font-size: 0.8125rem;
+    }
+
     .hero-slider__slide--mapeo .hero-slider__heading {
+        order: 3;
         align-items: flex-start;
         font-size: clamp(1.15rem, 5vw, 1.4rem);
         line-height: 1.28;
         gap: 4px;
     }
 
-    .hero-slider__slide--mapeo .hero-slider__eyebrow {
-        font-size: 0.8125rem;
-    }
-
     .hero-slider__slide--mapeo .hero-slider__text {
+        order: 4;
         font-size: 0.8125rem;
         line-height: 1.45;
-    }
-
-    .hero-slider__slide--mapeo .hero-slider__cta {
-        margin-top: 6px;
-        padding: 11px 20px;
-        font-size: 0.8125rem;
     }
 
     .hero-slider__slide--mapeo .hero-slider__media::before {
