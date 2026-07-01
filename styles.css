@@ -3409,6 +3409,10 @@ section[id] {
     object-position: 72% center;
 }
 
+.hero-slider__slide--especialista .hero-slider__media img {
+    object-position: 62% 8%;
+}
+
 .hero-slider__slide--mapeo .hero-slider__heading {
     font-size: clamp(1.375rem, 2.8vw, 2rem);
     line-height: 1.3;
@@ -3534,6 +3538,10 @@ section[id] {
 
     .hero-slider__media img {
         object-position: center top;
+    }
+
+    .hero-slider__slide--especialista .hero-slider__media img {
+        object-position: center 6%;
     }
 
     .hero-slider__dots {
