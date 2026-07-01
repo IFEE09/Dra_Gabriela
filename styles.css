@@ -3584,7 +3584,7 @@ section[id] {
     .hero-slider__slide--enzian .hero-slider__media {
         left: auto;
         right: 0;
-        width: 58%;
+        width: 66%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -3596,7 +3596,7 @@ section[id] {
         display: block;
         position: absolute;
         inset: 0 auto 0 0;
-        width: 48%;
+        width: 30%;
         z-index: 1;
         pointer-events: none;
         background: linear-gradient(
@@ -3616,8 +3616,8 @@ section[id] {
         max-height: none;
         object-fit: contain;
         object-position: right center;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
-        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.45) 14%, #000 34%);
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.45) 14%, #000 34%);
     }
 
     .hero-slider__slide--enzian .hero-slider__content {
