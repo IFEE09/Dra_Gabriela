@@ -3256,6 +3256,8 @@ section[id] {
     position: relative;
     width: 100%;
     padding-top: 72px;
+    min-height: 100svh;
+    box-sizing: border-box;
     background: transparent;
     overflow: hidden;
 }
@@ -3264,7 +3266,7 @@ section[id] {
     overflow: hidden;
     width: 100%;
     position: relative;
-    height: clamp(400px, 46svh, 480px);
+    height: calc(100svh - 72px);
 }
 
 .hero-slider__track {
@@ -3533,8 +3535,12 @@ section[id] {
 }
 
 @media (max-width: 767px) {
+    .hero-slider {
+        padding-top: 64px;
+    }
+
     .hero-slider__viewport {
-        height: clamp(440px, 58svh, 520px);
+        height: calc(100svh - 64px);
     }
 
     .hero-slider__content {
