@@ -3409,32 +3409,6 @@ section[id] {
     object-position: 72% center;
 }
 
-@media (max-width: 767px) {
-    .hero-slider__slide--mapeo .hero-slider__content {
-        justify-content: flex-start;
-        padding: 28px 20px 56px;
-    }
-
-    .hero-slider__slide--mapeo .hero-slider__media::before {
-        content: '';
-        display: block;
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.52) 0%,
-            rgba(0, 0, 0, 0.28) 30%,
-            transparent 58%
-        );
-    }
-
-    .hero-slider__slide--mapeo .hero-slider__media img {
-        object-position: center top;
-    }
-}
-
 /* Slide 2 — doctora de cuerpo completo a la derecha, degradado mauve a la izquierda */
 .hero-slider__slide--especialista .hero-slider__panel {
     background: var(--color-primary);
@@ -3852,6 +3826,56 @@ section[id] {
 
     .hero-slider__dots {
         bottom: 12px;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__content {
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        height: auto;
+        max-width: 100%;
+        padding: 8px 20px 12px;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__heading {
+        align-items: flex-start;
+        font-size: clamp(1.15rem, 5vw, 1.4rem);
+        line-height: 1.28;
+        gap: 4px;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__eyebrow {
+        font-size: 0.8125rem;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__text {
+        font-size: 0.8125rem;
+        line-height: 1.45;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__cta {
+        margin-top: 6px;
+        padding: 11px 20px;
+        font-size: 0.8125rem;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media::before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.58) 0%,
+            rgba(0, 0, 0, 0.28) 22%,
+            transparent 38%
+        );
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media img {
+        object-position: center 62%;
     }
 }
 
