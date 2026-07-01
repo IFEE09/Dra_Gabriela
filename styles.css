@@ -3409,8 +3409,33 @@ section[id] {
     object-position: 72% center;
 }
 
-.hero-slider__slide--especialista .hero-slider__media img {
-    object-position: 62% 8%;
+/* Slide 2 — doctora completa a la derecha, fondo mauve detrás del texto */
+.hero-slider__slide--especialista .hero-slider__panel {
+    background: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .hero-slider__slide--especialista .hero-slider__media {
+        left: auto;
+        right: 0;
+        width: 55%;
+    }
+
+    .hero-slider__slide--especialista .hero-slider__media img {
+        object-fit: contain;
+        object-position: right bottom;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 20%);
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-slider__slide--especialista .hero-slider__media img {
+        object-fit: contain;
+        object-position: center bottom;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
+    }
 }
 
 .hero-slider__slide--mapeo .hero-slider__heading {
@@ -3538,10 +3563,6 @@ section[id] {
 
     .hero-slider__media img {
         object-position: center top;
-    }
-
-    .hero-slider__slide--especialista .hero-slider__media img {
-        object-position: center 6%;
     }
 
     .hero-slider__dots {
