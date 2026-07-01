@@ -3457,6 +3457,16 @@ section[id] {
         background: var(--color-primary);
     }
 
+    .hero-slider__slide--especialista .hero-slider__content {
+        height: auto;
+        padding-bottom: 16px;
+    }
+
+    .hero-slider__slide--especialista .hero-slider__media {
+        inset: auto 0 0 0;
+        height: 58%;
+    }
+
     .hero-slider__slide--especialista .hero-slider__media img {
         object-fit: contain;
         object-position: center bottom;
