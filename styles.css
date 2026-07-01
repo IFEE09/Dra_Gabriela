@@ -3471,38 +3471,63 @@ section[id] {
     line-height: 1.5;
 }
 
-/* Slide 3 — lazo amarillo endometriosis, texto sobre espacio claro a la izquierda */
+/* Slide 3 — lazo amarillo endometriosis, degradado mauve a la izquierda */
 .hero-slider__slide--cirugias .hero-slider__panel {
-    background: #e5dacf;
+    background: linear-gradient(100deg, #6e4554 0%, var(--color-primary) 38%, #a5798a 62%, #d4c4b8 82%, #e5dacf 100%);
 }
 
 .hero-slider__slide--cirugias .hero-slider__content {
-    color: var(--endo-mauve-dark, #6e4554);
+    color: var(--color-white);
 }
 
 .hero-slider__slide--cirugias .hero-slider__heading,
 .hero-slider__slide--cirugias .hero-slider__heading-mark {
-    color: var(--endo-mauve-dark, #6e4554);
+    color: var(--color-white);
 }
 
 .hero-slider__slide--cirugias .hero-slider__media img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: right center;
 }
 
 @media (min-width: 768px) {
+    .hero-slider__slide--cirugias .hero-slider__media {
+        left: auto;
+        right: 0;
+        width: 50%;
+    }
+
+    .hero-slider__slide--cirugias .hero-slider__media img {
+        object-position: right center;
+        padding: 24px 16px 24px 0;
+        box-sizing: border-box;
+    }
+
     .hero-slider__slide--cirugias .hero-slider__content {
-        max-width: min(520px, 48%);
+        max-width: min(520px, 50%);
     }
 }
 
 @media (max-width: 767px) {
+    .hero-slider__slide--cirugias .hero-slider__panel {
+        background: linear-gradient(170deg, #6e4554 0%, var(--color-primary) 42%, #c9b5a8 100%);
+    }
+
+    .hero-slider__slide--cirugias .hero-slider__media {
+        top: auto;
+        bottom: 0;
+        height: 52%;
+    }
+
     .hero-slider__slide--cirugias .hero-slider__media img {
-        object-position: 75% center;
+        object-position: center bottom;
+        padding: 0 12px 8px;
+        box-sizing: border-box;
     }
 
     .hero-slider__slide--cirugias .hero-slider__content {
-        background: linear-gradient(to bottom, rgba(229, 218, 207, 0.92) 0%, rgba(229, 218, 207, 0.75) 70%, transparent 100%);
+        height: 48%;
+        padding-bottom: 24px;
     }
 }
 
