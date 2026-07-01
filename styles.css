@@ -3411,7 +3411,7 @@ section[id] {
 
 /* Slide 2 — doctora de cuerpo completo a la derecha, degradado mauve a la izquierda */
 .hero-slider__slide--especialista .hero-slider__panel {
-    background: linear-gradient(100deg, #6e4554 0%, var(--color-primary) 40%, #a5798a 72%, #b39a9c 100%);
+    background: var(--color-primary);
 }
 
 @media (min-width: 768px) {
@@ -3454,7 +3454,7 @@ section[id] {
 
 @media (max-width: 767px) {
     .hero-slider__slide--especialista .hero-slider__panel {
-        background: linear-gradient(170deg, #6e4554 0%, var(--color-primary) 45%, #a5798a 100%);
+        background: var(--color-primary);
     }
 
     .hero-slider__slide--especialista .hero-slider__media img {
@@ -3478,7 +3478,7 @@ section[id] {
 
 /* Slide 3 — lazo amarillo, mismo layout a pantalla completa que slide doctora */
 .hero-slider__slide--cirugias .hero-slider__panel {
-    background: linear-gradient(100deg, #6e4554 0%, var(--color-primary) 40%, #a5798a 72%, #e5dacf 100%);
+    background: var(--color-primary);
 }
 
 .hero-slider__slide--cirugias .hero-slider__content {
@@ -3537,7 +3537,7 @@ section[id] {
 
 @media (max-width: 767px) {
     .hero-slider__slide--cirugias .hero-slider__panel {
-        background: linear-gradient(170deg, #6e4554 0%, var(--color-primary) 45%, #c9b5a8 100%);
+        background: var(--color-primary);
     }
 
     .hero-slider__slide--cirugias .hero-slider__media {
