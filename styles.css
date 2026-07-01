@@ -3455,23 +3455,44 @@ section[id] {
 @media (max-width: 767px) {
     .hero-slider__slide--especialista .hero-slider__panel {
         background: var(--color-primary);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .hero-slider__slide--especialista .hero-slider__content {
+        position: relative;
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
         height: auto;
-        padding-bottom: 16px;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-start;
+        padding: 28px 20px 16px;
+    }
+
+    .hero-slider__slide--especialista .hero-slider__heading {
+        align-items: center;
     }
 
     .hero-slider__slide--especialista .hero-slider__media {
-        inset: auto 0 0 0;
-        height: 58%;
+        position: relative;
+        inset: auto;
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        margin-top: auto;
     }
 
     .hero-slider__slide--especialista .hero-slider__media img {
-        object-fit: contain;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: cover;
         object-position: center bottom;
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
-        mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
     }
 }
 
