@@ -3442,8 +3442,8 @@ section[id] {
     .hero-slider__slide--especialista .hero-slider__media img {
         object-fit: contain;
         object-position: right bottom;
-        -webkit-mask-image: none;
-        mask-image: none;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 48%);
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 48%);
     }
 }
 
