@@ -3565,6 +3565,82 @@ section[id] {
     }
 }
 
+/* Slide 4 — ENZIAN, mismo layout: imagen derecha + fundido primary a la izquierda */
+.hero-slider__slide--enzian .hero-slider__panel {
+    background: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .hero-slider__slide--enzian .hero-slider__media {
+        left: auto;
+        right: 0;
+        width: 58%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0;
+    }
+
+    .hero-slider__slide--enzian .hero-slider__media::before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 48%;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+            90deg,
+            var(--color-primary) 0%,
+            rgba(139, 90, 107, 0.94) 22%,
+            rgba(139, 90, 107, 0.58) 52%,
+            rgba(139, 90, 107, 0.18) 76%,
+            transparent 100%
+        );
+    }
+
+    .hero-slider__slide--enzian .hero-slider__media img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        object-fit: contain;
+        object-position: right center;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, #000 55%);
+    }
+
+    .hero-slider__slide--enzian .hero-slider__content {
+        max-width: min(540px, 46%);
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-slider__slide--enzian .hero-slider__media {
+        top: auto;
+        bottom: 0;
+        height: auto;
+        inset: auto 0 0 0;
+        padding: 0;
+    }
+
+    .hero-slider__slide--enzian .hero-slider__media img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        max-height: none;
+        object-fit: contain;
+        object-position: center bottom;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 18%);
+    }
+
+    .hero-slider__slide--enzian .hero-slider__content {
+        height: auto;
+        padding-bottom: 24px;
+    }
+}
+
 .hero-slider__dots {
     position: absolute;
     bottom: 18px;
