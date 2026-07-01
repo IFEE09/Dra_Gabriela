@@ -3409,6 +3409,32 @@ section[id] {
     object-position: 72% center;
 }
 
+@media (max-width: 767px) {
+    .hero-slider__slide--mapeo .hero-slider__content {
+        justify-content: flex-start;
+        padding: 28px 20px 56px;
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media::before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.52) 0%,
+            rgba(0, 0, 0, 0.28) 30%,
+            transparent 58%
+        );
+    }
+
+    .hero-slider__slide--mapeo .hero-slider__media img {
+        object-position: center top;
+    }
+}
+
 /* Slide 2 — doctora de cuerpo completo a la derecha, degradado mauve a la izquierda */
 .hero-slider__slide--especialista .hero-slider__panel {
     background: var(--color-primary);
@@ -3473,7 +3499,14 @@ section[id] {
     }
 
     .hero-slider__slide--especialista .hero-slider__heading {
+        order: 2;
         align-items: center;
+    }
+
+    .hero-slider__slide--especialista .hero-slider__cta {
+        order: 1;
+        margin-top: 0;
+        margin-bottom: 12px;
     }
 
     .hero-slider__slide--especialista .hero-slider__media {
@@ -3581,7 +3614,24 @@ section[id] {
 
     .hero-slider__slide--cirugias .hero-slider__content {
         height: auto;
-        padding-bottom: 24px;
+        max-width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 20px 16px;
+    }
+
+    .hero-slider__slide--cirugias .hero-slider__heading {
+        order: 2;
+        align-items: center;
+    }
+
+    .hero-slider__slide--cirugias .hero-slider__cta {
+        order: 1;
+        margin-top: 0;
+        margin-bottom: 12px;
     }
 }
 
@@ -3657,7 +3707,24 @@ section[id] {
 
     .hero-slider__slide--enzian .hero-slider__content {
         height: auto;
-        padding-bottom: 24px;
+        max-width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 20px 16px;
+    }
+
+    .hero-slider__slide--enzian .hero-slider__heading {
+        order: 2;
+        align-items: center;
+    }
+
+    .hero-slider__slide--enzian .hero-slider__cta {
+        order: 1;
+        margin-top: 0;
+        margin-bottom: 12px;
     }
 }
 
@@ -3770,7 +3837,13 @@ section[id] {
     .hero-slider__content {
         max-width: 100%;
         justify-content: flex-end;
+        align-items: center;
+        text-align: center;
         padding: 24px 20px 56px;
+    }
+
+    .hero-slider__heading {
+        align-items: center;
     }
 
     .hero-slider__media img {
