@@ -413,6 +413,23 @@ if (lightbox && lightboxImg) {
         });
     });
 
+    document.querySelectorAll('.js-lightbox-trigger').forEach(trigger => {
+        const openFromTrigger = () => {
+            const img = trigger.querySelector('img');
+            if (!img) return;
+
+            const isSameImageOpen = lightbox.classList.contains('active') && lightboxImg.src === img.src;
+            if (isSameImageOpen) {
+                closeLightbox();
+                return;
+            }
+
+            openLightbox(img.src, img.alt, img.alt);
+        };
+
+        trigger.addEventListener('click', openFromTrigger);
+    });
+
     if (lightboxClose) {
         lightboxClose.addEventListener('click', (e) => {
             e.preventDefault();

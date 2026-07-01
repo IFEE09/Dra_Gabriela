@@ -100,7 +100,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="styles.css?v=3.7">
+    <link rel="stylesheet" href="styles.css?v=3.8">
 </head>
 
 <body class="page-mapeo page-service-detail">
@@ -155,9 +155,15 @@
                         <h1 class="service-detail-title">Mapeo ecográfico de endometriosis</h1>
                     </div>
                     <figure class="service-detail-hero__media">
-                        <img src="recursos/servicios/mapeo-ecografico-endometriosis-hero.jpg"
-                            alt="Infografía educativa sobre el signo del deslizamiento en ecografía transvaginal"
-                            width="1024" height="764" loading="eager" decoding="async">
+                        <button type="button" class="service-detail-hero__expand js-lightbox-trigger"
+                            aria-label="Ampliar infografía: estudio dinámico de adherencias y signo del deslizamiento">
+                            <img src="recursos/servicios/mapeo-ecografico-endometriosis-hero.jpg"
+                                alt="Infografía educativa sobre el signo del deslizamiento en ecografía transvaginal"
+                                width="1024" height="764" loading="eager" decoding="async">
+                            <span class="service-detail-hero__expand-hint" aria-hidden="true">
+                                <i class="fas fa-expand"></i>
+                            </span>
+                        </button>
                     </figure>
                 </div>
             </div>
@@ -322,8 +328,16 @@
         </div>
     </footer>
 
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Imagen ampliada">
+        <button type="button" class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+        <figure class="lightbox-figure">
+            <img class="lightbox-content" id="lightbox-img" alt="">
+            <figcaption id="lightbox-caption" class="lightbox-caption"></figcaption>
+        </figure>
+    </div>
+
     <script src="security.js" defer></script>
-    <script src="script.js?v=2.2" defer></script>
+    <script src="script.js?v=2.3" defer></script>
 </body>
 
 </html>
