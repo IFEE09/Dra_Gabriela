@@ -4332,6 +4332,21 @@ section[id] {
     color: var(--endo-mauve);
 }
 
+.pelvic-services__icon--image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.pelvic-services__icon--image img {
+    width: 34px;
+    height: auto;
+    max-height: 34px;
+    object-fit: contain;
+    display: block;
+}
+
 .page-mapeo .pelvic-services + .hero.hero--compact {
     padding-top: 40px;
 }
