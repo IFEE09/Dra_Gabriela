@@ -1242,6 +1242,17 @@ a {
     color: var(--color-text-light);
 }
 
+.faq-answer-content a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.faq-answer-content a:hover {
+    color: var(--color-primary-dark);
+}
+
 @media (min-width: 768px) {
     .faq-answer-content {
         padding: 0 32px 24px;
