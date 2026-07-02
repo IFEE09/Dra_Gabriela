@@ -242,6 +242,32 @@ a {
     animation: none;
 }
 
+/* Botón flotante "Regresar" — lado izquierdo en subpáginas de servicios */
+.back-float {
+    position: fixed;
+    bottom: max(30px, env(safe-area-inset-bottom, 0px));
+    left: max(30px, env(safe-area-inset-left, 0px));
+    z-index: 1000;
+    height: 50px;
+    width: auto;
+    background-color: var(--color-primary);
+    border-radius: 25px;
+    padding: 0 25px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.back-float i {
+    font-size: 16px;
+}
+
+.back-float:hover {
+    background-color: var(--color-primary-dark);
+}
+
 /* Animations */
 @keyframes pulsePurple {
     0% {
@@ -286,6 +312,14 @@ a {
     }
 
     .call-float {
+        height: 45px;
+        padding: 0 20px;
+        font-size: 13px;
+    }
+
+    .back-float {
+        bottom: 20px;
+        left: 20px;
         height: 45px;
         padding: 0 20px;
         font-size: 13px;
