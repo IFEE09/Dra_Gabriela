@@ -4340,9 +4340,9 @@ section[id] {
 }
 
 .pelvic-services__icon--image img {
-    width: 34px;
-    height: auto;
-    max-height: 34px;
+    width: auto;
+    height: 22px;
+    max-width: 100%;
     object-fit: contain;
     display: block;
 }
