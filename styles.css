@@ -4323,8 +4323,12 @@ section[id] {
     border-radius: var(--radius-md);
 }
 
-.pelvic-services__icon i {
+.pelvic-services__icon i,
+.pelvic-services__icon svg {
     font-size: 22px;
+    width: 22px;
+    height: 22px;
+    fill: var(--endo-mauve);
     color: var(--endo-mauve);
 }
 
