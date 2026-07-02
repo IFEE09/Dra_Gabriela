@@ -3420,7 +3420,7 @@ section[id] {
         right: 0;
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         padding: 0;
     }
@@ -3448,7 +3448,7 @@ section[id] {
         max-width: none;
         max-height: none;
         object-fit: contain;
-        object-position: center center;
+        object-position: right center;
         -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 8%, #000 22%);
         mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 8%, #000 22%);
     }
