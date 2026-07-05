@@ -3871,15 +3871,15 @@ section[id] {
         flex-direction: column;
         height: auto;
         max-width: 100%;
-        padding: 8px 20px 12px;
+        padding: 20px 20px 20px;
     }
 
     .hero-slider__slide--mapeo .hero-slider__cta {
         order: 1;
-        margin-top: 0;
-        margin-bottom: 10px;
-        padding: 11px 20px;
-        font-size: 0.8125rem;
+        margin-top: 6px;
+        margin-bottom: 18px;
+        padding: 13px 26px;
+        font-size: 0.875rem;
     }
 
     .hero-slider__slide--mapeo .hero-slider__eyebrow {
