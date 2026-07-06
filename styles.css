@@ -4633,6 +4633,7 @@ section[id] {
 
 .service-detail-table-wrap {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: 1.5rem 0;
     border-radius: var(--radius-md);
     border: 1px solid rgba(139, 90, 107, 0.12);
@@ -4640,7 +4641,7 @@ section[id] {
 
 .service-detail-table {
     width: 100%;
-    min-width: 560px;
+    min-width: 0;
     border-collapse: collapse;
     font-size: 0.9375rem;
 }
@@ -4687,7 +4688,7 @@ section[id] {
     max-width: none;
     text-align: left;
     margin-bottom: 0;
-    padding: 32px 24px;
+    padding: 24px 16px;
     align-items: stretch;
 }
 
@@ -4767,6 +4768,91 @@ section[id] {
     gap: 12px;
     margin-bottom: 0;
     width: 100%;
+}
+
+/* ===== RESPONSIVIDAD MOBILE — service-detail ===== */
+@media (max-width: 767px) {
+
+    .page-service-detail .service-detail-hero {
+        padding: 80px 0 28px;
+    }
+
+    .service-detail-hero__row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-detail-hero__media {
+        order: -1;
+    }
+
+    .service-detail-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .service-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .service-detail-content p {
+        font-size: 0.9375rem;
+    }
+
+    .service-detail-lead {
+        font-size: 1rem !important;
+    }
+
+    .service-detail-table {
+        font-size: 0.8125rem;
+    }
+
+    .service-detail-table th,
+    .service-detail-table td {
+        padding: 10px 10px;
+    }
+
+    .service-detail-aside-card {
+        padding: 20px 16px;
+    }
+
+    .service-detail-cta-box--with-map {
+        grid-template-columns: 1fr;
+        padding: 24px 16px;
+        gap: 20px;
+    }
+
+    .service-detail-cta-box__map {
+        min-height: 200px;
+        height: 200px;
+    }
+
+    .service-detail-cta-box--with-map .cta-phones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .service-detail-cta-box--with-map .cta-phones .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .service-detail-breadcrumb {
+        font-size: 0.8125rem;
+    }
+
+    .service-detail-content h2 {
+        font-size: clamp(1.15rem, 5vw, 1.4rem);
+    }
+
+    .service-detail-content h3 {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+    }
+
+    .service-detail-content ul,
+    .service-detail-content ol {
+        padding-left: 1rem;
+    }
 }
 
 .service-detail-cta-box .cta-phones {
