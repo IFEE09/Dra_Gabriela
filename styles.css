@@ -3875,28 +3875,25 @@ section[id] {
     }
 
     .hero-slider__slide--mapeo .hero-slider__cta {
-        order: 1;
-        margin-top: 6px;
-        margin-bottom: 18px;
+        order: 4;
+        margin-top: 12px;
+        margin-bottom: 6px;
         padding: 13px 26px;
         font-size: 0.875rem;
     }
-
     .hero-slider__slide--mapeo .hero-slider__eyebrow {
-        order: 2;
+        order: 1;
         font-size: 0.8125rem;
     }
-
     .hero-slider__slide--mapeo .hero-slider__heading {
-        order: 3;
+        order: 2;
         align-items: flex-start;
         font-size: clamp(1.15rem, 5vw, 1.4rem);
         line-height: 1.28;
         gap: 4px;
     }
-
     .hero-slider__slide--mapeo .hero-slider__text {
-        order: 4;
+        order: 3;
         font-size: 0.8125rem;
         line-height: 1.45;
     }
