@@ -89,9 +89,10 @@
     Deny from all
 </FilesMatch>
 
-# Block access to hidden files/directories
+# Block access to hidden files/directories (excepto /.well-known/ para validación SSL)
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/\.well-known/
     RewriteRule (^|/)\. - [F]
 </IfModule>
 
@@ -146,6 +147,16 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ==========================================
+# 8b. CORRECT MIME TYPES (fuentes, webp, manifest)
+# ==========================================
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType image/webp .webp
+    AddType image/svg+xml .svg
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ==========================================
 # 9. COMPRESSION (Performance + Security benefit)
 # ==========================================
 <IfModule mod_deflate.c>
@@ -166,8 +177,12 @@ ErrorDocument 404 /404.html
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/manifest+json "access plus 1 week"
     ExpiresByType text/html "access plus 1 day"
 </IfModule>
 
@@ -181,7 +196,8 @@ ErrorDocument 404 /404.html
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
-    # http -> https
+    # http -> https (compatible con SSL terminado en proxy/LiteSpeed de Hostinger; evita bucles)
     RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>

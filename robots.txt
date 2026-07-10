@@ -7,6 +7,5 @@ Allow: /*.js
 Disallow: /update_faqs.py
 Disallow: /update_faqs2.py
 Disallow: /.htaccess
-Disallow: /netlify.toml
 
 Sitemap: https://dragabrielacanche.com/sitemap.xml
