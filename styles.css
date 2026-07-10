@@ -297,12 +297,44 @@ a {
     }
 }
 
+.floating-buttons__label {
+    display: none;
+}
+
 /* Responsive adjustments for floating buttons */
 @media (max-width: 768px) {
     .floating-buttons {
         bottom: 20px;
         right: 20px;
+        display: grid !important;
+        grid-template-columns: auto auto;
+        justify-items: center;
+        align-items: end;
+        column-gap: 10px;
+        row-gap: 6px;
+        width: max-content;
         gap: 10px;
+    }
+
+    .floating-buttons__label {
+        display: block;
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        line-height: 1;
+        color: #fff;
+        background: var(--color-primary-dark);
+        border-radius: 999px;
+        padding: 6px 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+        white-space: nowrap;
+        pointer-events: none;
     }
 
     .whatsapp-float {
@@ -315,6 +347,18 @@ a {
         height: 45px;
         padding: 0 20px;
         font-size: 13px;
+    }
+
+    .call-float span {
+        display: none;
+    }
+
+    .call-float {
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        border-radius: 50%;
+        margin-bottom: 0;
     }
 
     .back-float {
@@ -1525,48 +1569,7 @@ a {
         bottom: 16px;
         right: 16px;
         left: auto;
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-items: center;
-        align-items: end;
         column-gap: 8px;
-        row-gap: 6px;
-        width: max-content;
-    }
-
-    .floating-buttons::before {
-        content: "AGENDA AQUÍ";
-        grid-column: 1 / -1;
-        justify-self: stretch;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-        font-family: var(--font-body);
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 0.03em;
-        line-height: 1;
-        color: #fff;
-        background: var(--color-primary-dark);
-        border: none;
-        border-radius: 999px;
-        padding: 6px 8px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
-        pointer-events: none;
-        white-space: nowrap;
-    }
-
-    .call-float span {
-        display: none;
-    }
-
-    .call-float {
-        width: 45px;
-        height: 45px;
-        padding: 0;
-        border-radius: 50%;
-        margin-bottom: 0;
     }
 
     .location-header-content {
