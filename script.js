@@ -30,6 +30,17 @@ if (header) {
 // FAQ Accordion
 const faqItems = document.querySelectorAll('.faq-item');
 
+function getFaqAnswerHeight(answer) {
+    const content = answer.querySelector('.faq-answer-content');
+    if (content) {
+        const styles = window.getComputedStyle(answer);
+        const paddingTop = parseFloat(styles.paddingTop) || 0;
+        const paddingBottom = parseFloat(styles.paddingBottom) || 0;
+        return content.scrollHeight + paddingTop + paddingBottom;
+    }
+    return answer.scrollHeight;
+}
+
 function closeFaqItem(item) {
     const answer = item.querySelector('.faq-answer');
     const question = item.querySelector('.faq-question');
@@ -43,7 +54,14 @@ function openFaqItem(item) {
     const question = item.querySelector('.faq-question');
     item.classList.add('active');
     if (question) question.setAttribute('aria-expanded', 'true');
-    if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+    if (!answer) return;
+
+    // Measure full content height so long answers are never clipped
+    answer.style.maxHeight = 'none';
+    const height = getFaqAnswerHeight(answer);
+    answer.style.maxHeight = '0px';
+    void answer.offsetHeight;
+    answer.style.maxHeight = `${height}px`;
 }
 
 faqItems.forEach(item => {
@@ -73,7 +91,7 @@ window.addEventListener('resize', () => {
     faqItems.forEach(item => {
         if (!item.classList.contains('active')) return;
         const answer = item.querySelector('.faq-answer');
-        if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+        if (answer) answer.style.maxHeight = `${getFaqAnswerHeight(answer)}px`;
     });
 });
 
