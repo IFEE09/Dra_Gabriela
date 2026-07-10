@@ -922,6 +922,15 @@ a {
     /* Ensure proper rendering */
 }
 
+.expertise-card-svg {
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary);
+    fill: currentColor;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
 .expertise-card-img {
     height: 48px;
     width: auto;
@@ -1910,6 +1919,10 @@ a {
     justify-content: center;
 }
 
+.author-info h3 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
 /* Adjust section header margin specifically for testimonials */
 #testimonios .section-header {
     margin-bottom: 20px;
@@ -2017,7 +2030,8 @@ a {
 .specialist-badge {
     background: rgba(212, 165, 116, 0.15);
     /* Accent color transparent */
-    color: var(--color-accent-dark);
+    color: #84623F;
+    /* Darkened from --color-accent-dark for WCAG AA contrast (4.5:1) on this light background */
     padding: 12px 20px;
     border-radius: var(--radius-md);
     font-weight: 700;
@@ -2166,7 +2180,7 @@ a {
     border-color: var(--color-primary-light);
 }
 
-.credential-logo-card h4 {
+.credential-logo-card h3 {
     margin-top: 20px;
     font-size: 1.1rem;
     color: var(--color-text);
@@ -3551,25 +3565,23 @@ section[id] {
     }
 
     .hero-slider__slide--especialista .hero-slider__content {
-        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 42%;
         max-width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         text-align: center;
         display: flex;
         flex-direction: column;
-        padding: 28px 20px 16px;
+        padding: 16px 20px;
+        box-sizing: border-box;
     }
 
     .hero-slider__slide--especialista .hero-slider__heading {
-        order: 2;
         align-items: center;
-    }
-
-    .hero-slider__slide--especialista .hero-slider__cta {
-        order: 1;
-        margin-top: 0;
-        margin-bottom: 12px;
     }
 }
 
@@ -3640,7 +3652,7 @@ section[id] {
     .hero-slider__slide--cirugias .hero-slider__media {
         top: auto;
         bottom: 0;
-        height: auto;
+        height: 58%;
         inset: auto 0 0 0;
         padding: 0;
     }
@@ -3657,25 +3669,23 @@ section[id] {
     }
 
     .hero-slider__slide--cirugias .hero-slider__content {
-        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 42%;
         max-width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         text-align: center;
         display: flex;
         flex-direction: column;
-        padding: 28px 20px 16px;
+        padding: 16px 20px;
+        box-sizing: border-box;
     }
 
     .hero-slider__slide--cirugias .hero-slider__heading {
-        order: 2;
         align-items: center;
-    }
-
-    .hero-slider__slide--cirugias .hero-slider__cta {
-        order: 1;
-        margin-top: 0;
-        margin-bottom: 12px;
     }
 }
 
@@ -3748,25 +3758,23 @@ section[id] {
     }
 
     .hero-slider__slide--enzian .hero-slider__content {
-        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 42%;
         max-width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         text-align: center;
         display: flex;
         flex-direction: column;
-        padding: 28px 20px 16px;
+        padding: 16px 20px;
+        box-sizing: border-box;
     }
 
     .hero-slider__slide--enzian .hero-slider__heading {
-        order: 2;
         align-items: center;
-    }
-
-    .hero-slider__slide--enzian .hero-slider__cta {
-        order: 1;
-        margin-top: 0;
-        margin-bottom: 12px;
     }
 }
 

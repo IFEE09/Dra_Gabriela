@@ -20,9 +20,8 @@
     <link rel="alternate" hreflang="es-MX" href="https://dragabrielacanche.com/">
     <link rel="alternate" hreflang="x-default" href="https://dragabrielacanche.com/">
     <!-- Preload LCP Hero Image -->
-    <link rel="preload" href="./recursos/fotodra.jpeg" as="image" fetchpriority="high" type="image/jpeg">
+    <link rel="preload" href="./recursos/fotodra.webp" as="image" fetchpriority="high" type="image/webp">
     <!-- Preload fuente principal para evitar FOUT -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" as="style">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -61,9 +60,9 @@
     <!--
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn-uicons.flaticon.com;
-        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn-uicons.flaticon.com;
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        font-src 'self' https://cdnjs.cloudflare.com;
         img-src 'self' data: https: blob:;
         frame-src 'self' https://www.google.com https://maps.google.com;
         connect-src 'self' https://wa.me https://api.whatsapp.com;
@@ -132,9 +131,11 @@
                 "closes": "12:00"
             }
         ],
+        "hasMap": "https://www.google.com/maps?cid=5676916704928339302",
         "sameAs": [
             "https://www.facebook.com/ultrasonidobiogamma",
-            "https://www.instagram.com/ultrasonido_biogamma"
+            "https://www.instagram.com/ultrasonido_biogamma",
+            "https://www.google.com/maps?cid=5676916704928339302"
         ],
         "medicalSpecialty": [
             "Radiología",
@@ -370,12 +371,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Fuentes auto-hospedadas (Cormorant Garamond, Montserrat, Outfit) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="./recursos/fonts/fonts.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -383,16 +381,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
 
-    <!-- Boxicons como alternativa -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"></noscript>
-
-    <!-- Flaticon UIicons -->
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css"></noscript>
-
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=8.9">
+    <link rel="stylesheet" href="styles.css?v=9.1">
 
     <!-- maint-note-0 -->
     <!-- maint-note-5 -->
@@ -410,7 +400,7 @@
     <!-- Floating Buttons -->
     <div class="floating-buttons">
         <span class="floating-buttons__label" aria-hidden="true">AGENDA AQUÍ</span>
-        <a href="tel:9992010898" class="float-btn call-float" aria-label="Llamar para agendar cita">
+        <a href="tel:9992010898" class="float-btn call-float" aria-label="Agenda aquí: llamar para agendar cita">
             <span>AGENDA AQUÍ</span>
             <i class="fas fa-phone"></i>
         </a>
@@ -460,9 +450,12 @@
             <div class="hero-content">
                 <div class="hero-image">
                     <div class="hero-image-wrapper">
-                        <img src="./recursos/fotodra.jpeg"
-                            alt="Dra. Gabriela B. Canché Escalante, radióloga especialista en Mapeo de Endometriosis y ultrasonido ginecológico en Mérida"
-                            width="1067" height="1600" fetchpriority="high" loading="eager">
+                        <picture>
+                            <source srcset="./recursos/fotodra.webp" type="image/webp">
+                            <img src="./recursos/fotodra.jpeg"
+                                alt="Dra. Gabriela B. Canché Escalante, radióloga especialista en Mapeo de Endometriosis y ultrasonido ginecológico en Mérida"
+                                width="1067" height="1600" fetchpriority="high" loading="eager">
+                        </picture>
                     </div>
                 </div>
                 <div class="hero-text">
@@ -582,7 +575,7 @@
 
                 </div>
                 <div style="margin-top: 30px; text-align: center;">
-                    <img src="./recursos/dra_parada.jpeg"
+                    <img src="./recursos/dra_parada.webp"
                         alt="Dra. Gabriela B. Canché Escalante - Experta en mapeo de endometriosis y ultrasonido ginecológico Mérida"
                         width="853" height="1280" loading="lazy"
                         style="max-width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
@@ -593,7 +586,7 @@
                 <div class="location-buttons-container">
                     <a href="tel:9992010898" class="location-btn">
                         <div class="location-logo">
-                            <img src="./recursos/biogamma_logo_new.png" alt="Biogamma Logo" loading="lazy"
+                            <img src="./recursos/biogamma_logo_new.webp" alt="Biogamma Logo" loading="lazy"
                                 style="max-width: 100%; object-fit: contain; filter: brightness(0) invert(1);">
                         </div>
                         <div class="location-text">
@@ -603,7 +596,7 @@
 
                     <a href="tel:9992010898" class="location-btn">
                         <div class="location-logo">
-                            <img src="./recursos/ultrasonidoPoligonoLogo.png" alt="Polígono Logo" loading="lazy"
+                            <img src="./recursos/ultrasonidoPoligonoLogo.webp" alt="Polígono Logo" loading="lazy"
                                 style="max-width: 100%; object-fit: contain; filter: brightness(0) invert(1);">
                         </div>
                         <div class="location-text">
@@ -659,6 +652,9 @@
                             mujer radióloga en Mérida realizando este estudio</li>
                     </ul>
                     <a href="mapeo-endometriosis.html" class="service-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--color-primary); font-weight: 700; text-decoration: none;">Conoce más sobre el Mapeo de Endometriosis <i class="fas fa-arrow-right"></i></a>
+                    <a href="mapeo-ecografico-de-endometriosis.html" class="service-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--color-primary); font-weight: 700; text-decoration: none;">Conoce más sobre el Mapeo Ecográfico <i class="fas fa-arrow-right"></i></a>
+                    <a href="estudio-dinamico-adherencias-endometriosis.html" class="service-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--color-primary); font-weight: 700; text-decoration: none;">Conoce más sobre el Estudio de Adherencias <i class="fas fa-arrow-right"></i></a>
+                    <a href="silla-pelvica-biomagnetica.html" class="service-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--color-primary); font-weight: 700; text-decoration: none;">Conoce más sobre la Silla Pélvica Biomagnética <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Ecografía 3D y Doppler Pélvico -->
@@ -756,7 +752,7 @@
                     <p>Hígado, vías biliares, páncreas, bazo, riñones. Protocolo de apendicitis y prueba de Boyden</p>
                 </div>
                 <div class="expertise-card">
-                    <img src="./recursos/tiroides.png" alt="Icono Cuello y Tiroides" class="expertise-card-img" width="519" height="309" loading="lazy">
+                    <img src="./recursos/tiroides.webp" alt="Icono Cuello y Tiroides" class="expertise-card-img" width="519" height="309" loading="lazy">
                     <h4>Cuello y Tiroides</h4>
                     <p>Nódulos tiroideos (TIRADS), cáncer de tiroides, adenomegalias cervicales</p>
                 </div>
@@ -776,7 +772,10 @@
                     <p>Diástasis de rectos, hernias, lipomas, abscesos, seromas</p>
                 </div>
                 <div class="expertise-card">
-                    <i class="fi fi-ss-kidneys"></i>
+                    <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false" class="expertise-card-svg">
+                        <path d="M180,110 C120,110 95,175 95,256 C95,337 120,402 180,402 C215,402 230,370 220,335 C210,300 175,300 175,256 C175,212 210,212 220,177 C230,142 215,110 180,110 Z" />
+                        <path d="M332,110 C392,110 417,175 417,256 C417,337 392,402 332,402 C297,402 282,370 292,335 C302,300 337,300 337,256 C337,212 302,212 292,177 C282,142 297,110 332,110 Z" />
+                    </svg>
                     <h4>Renal y Vías Urinarias</h4>
                     <p>Riñones, uréteres, vejiga, volumen postmiccional, jets ureterales</p>
                 </div>
@@ -915,7 +914,7 @@
                         <li>
                             <div class="doctor-info">
                                 <strong>
-                                    <img src="./recursos/jun luis alcazar.jpeg" alt="Dr. Juan Luis Alcázar"
+                                    <img src="./recursos/jun luis alcazar.webp" alt="Dr. Juan Luis Alcázar"
                                         class="doctor-avatar" loading="lazy">
                                     <a href="https://www.linkedin.com/in/juan-luis-alcazar-zambrano-53a8ab28/"
                                         target="_blank" rel="noopener noreferrer">Dr. Juan Luis Alcázar (España) <i
@@ -928,7 +927,7 @@
                         <li>
                             <div class="doctor-info">
                                 <strong>
-                                    <img src="./recursos/juan_carlos_aguilar.png" alt="Dr. Juan Carlos Aguilar"
+                                    <img src="./recursos/juan_carlos_aguilar.webp" alt="Dr. Juan Carlos Aguilar"
                                         class="doctor-avatar" loading="lazy">
                                     <a href="https://www.linkedin.com/in/juan-carlos-aguilar-28a8864a/" target="_blank"
                                         rel="noopener noreferrer">Dr. Juan Carlos Aguilar (México) <i
@@ -963,78 +962,78 @@
                 <div class="cert-track">
                     <!-- Original Slides -->
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.00.jpeg" alt="Certificado 1"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.00.webp" alt="Certificado 1"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01.jpeg" alt="Certificado 2"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01.webp" alt="Certificado 2"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02.jpeg" alt="Certificado 3"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02.webp" alt="Certificado 3"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.03.jpeg" alt="Certificado 4"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.03.webp" alt="Certificado 4"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04.jpeg" alt="Certificado 5"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04.webp" alt="Certificado 5"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (1).jpeg" alt="Certificado 6"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (1).webp" alt="Certificado 6"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (2).jpeg" alt="Certificado 7"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (2).webp" alt="Certificado 7"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02 (1).jpeg" alt="Certificado 8"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02 (1).webp" alt="Certificado 8"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04 (1).jpeg" alt="Certificado 9"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04 (1).webp" alt="Certificado 9"
                             loading="lazy">
                     </div>
 
                     <!-- Duplicated Slides for Infinite Effect (CSS Animation) -->
                     <!-- We duplicate everything once more to ensure smooth loop -->
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.00.jpeg" alt="Certificado 1"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.00.webp" alt="Certificado 1"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01.jpeg" alt="Certificado 2"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01.webp" alt="Certificado 2"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02.jpeg" alt="Certificado 3"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02.webp" alt="Certificado 3"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.03.jpeg" alt="Certificado 4"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.03.webp" alt="Certificado 4"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04.jpeg" alt="Certificado 5"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04.webp" alt="Certificado 5"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (1).jpeg" alt="Certificado 6"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (1).webp" alt="Certificado 6"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (2).jpeg" alt="Certificado 7"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.01 (2).webp" alt="Certificado 7"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02 (1).jpeg" alt="Certificado 8"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.02 (1).webp" alt="Certificado 8"
                             loading="lazy">
                     </div>
                     <div class="cert-slide">
-                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04 (1).jpeg" alt="Certificado 9"
+                        <img src="./galeria/WhatsApp Image 2025-12-20 at 21.35.04 (1).webp" alt="Certificado 9"
                             loading="lazy">
                     </div>
                 </div>
@@ -1060,16 +1059,16 @@
                 <!-- Medicina Fetal Mexico -->
                 <div class="credential-logo-card">
                     <div class="logo-box">
-                        <img src="./recursos/medicinafetalmexico.png" alt="Medicina Fetal México" loading="lazy"
+                        <img src="./recursos/medicinafetalmexico.webp" alt="Medicina Fetal México" loading="lazy"
                             style="max-height: 100%; max-width: 100%; object-fit: contain;">
                     </div>
-                    <h4>Medicina Fetal México</h4>
+                    <h3>Medicina Fetal México</h3>
                 </div>
 
                 <!-- Medicina Fetal Barcelona -->
                 <div class="credential-logo-card">
                     <div class="logo-box">
-                        <img src="./recursos/medicinafetalbarcelona.png" alt="Medicina Fetal Barcelona" loading="lazy"
+                        <img src="./recursos/medicinafetalbarcelona.webp" alt="Medicina Fetal Barcelona" loading="lazy"
                             style="max-height: 100%; max-width: 100%; object-fit: contain;">
                     </div>
 
@@ -1087,7 +1086,7 @@
                 <!-- ISUOG -->
                 <div class="credential-logo-card">
                     <div class="logo-box">
-                        <img src="./recursos/isuog_logo-82A08.png"
+                        <img src="./recursos/isuog_logo-82A08.webp"
                             alt="International Society of Ultrasound in Obstetrics and Gynecology" loading="lazy"
                             style="max-height: 100%; max-width: 100%; object-fit: contain;">
                     </div>
@@ -1097,7 +1096,7 @@
                 <!-- European Accreditation -->
                 <div class="credential-logo-card">
                     <div class="logo-box">
-                        <img src="./recursos/European Accreditation Council for Continuing Medical Education (EACCME).png"
+                        <img src="./recursos/European Accreditation Council for Continuing Medical Education (EACCME).webp"
                             alt="European Accreditation Council for Continuing Medical Education" loading="lazy"
                             style="max-height: 100%; max-width: 100%; object-fit: contain;">
                     </div>
@@ -1129,7 +1128,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar">M</div>
                                 <div class="author-info">
-                                    <h4>Mariana G.</h4>
+                                    <h3>Mariana G.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1148,7 +1147,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-accent);">F</div>
                                 <div class="author-info">
-                                    <h4>Fernanda L.</h4>
+                                    <h3>Fernanda L.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1167,7 +1166,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-primary-light);">A</div>
                                 <div class="author-info">
-                                    <h4>Ana P.</h4>
+                                    <h3>Ana P.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1186,7 +1185,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: #2D3E50;">S</div>
                                 <div class="author-info">
-                                    <h4>Sofía M.</h4>
+                                    <h3>Sofía M.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1205,7 +1204,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-primary);">K</div>
                                 <div class="author-info">
-                                    <h4>Karla R.</h4>
+                                    <h3>Karla R.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1224,7 +1223,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-accent);">L</div>
                                 <div class="author-info">
-                                    <h4>Laura T.</h4>
+                                    <h3>Laura T.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1243,7 +1242,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-primary-light);">R</div>
                                 <div class="author-info">
-                                    <h4>Roberto C.</h4>
+                                    <h3>Roberto C.</h3>
                                     <span>Paciente Verificado</span>
                                 </div>
                             </div>
@@ -1262,7 +1261,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: #2D3E50;">P</div>
                                 <div class="author-info">
-                                    <h4>Patricia S.</h4>
+                                    <h3>Patricia S.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1281,7 +1280,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-primary);">E</div>
                                 <div class="author-info">
-                                    <h4>Elena V.</h4>
+                                    <h3>Elena V.</h3>
                                     <span>Paciente Verificada</span>
                                 </div>
                             </div>
@@ -1300,7 +1299,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar" style="background: var(--color-accent);">J</div>
                                 <div class="author-info">
-                                    <h4>Jorge M.</h4>
+                                    <h3>Jorge M.</h3>
                                     <span>Paciente Verificado</span>
                                 </div>
                             </div>
@@ -1342,7 +1341,7 @@
                                 <h3>Ultrasonido Biogamma</h3>
                                 <p>Francisco de Montejo</p>
                             </div>
-                            <img src="./recursos/biogamma_logo_new.png" alt="Logo Biogamma" loading="lazy"
+                            <img src="./recursos/biogamma_logo_new.webp" alt="Logo Biogamma" loading="lazy"
                                 class="card-location-logo biogamma-logo">
                         </div>
                     </div>
@@ -1370,10 +1369,18 @@
                                     <a href="https://wa.me/529992010898" target="_blank" rel="noopener">999 201 0898</a>
                                 </div>
                             </div>
+                            <div class="location-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Ubicación</strong>
+                                    <a href="https://www.google.com/maps?cid=5676916704928339302" target="_blank" rel="noopener">Ver en Google Maps y cómo llegar</a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="location-map">
                             <iframe
+                                title="Mapa de ubicación de Ultrasonido Biogamma"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.834309323663!2d-89.64163150000002!3d21.039314700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5675a2d10d0371%3A0x4ec875aa60bc1566!2sUltrasonido%20Biogamma!5e0!3m2!1sen!2smx!4v1766274707996!5m2!1sen!2smx"
                                 width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1388,7 +1395,7 @@
                                 <h3>Ultrasonido Polígono</h3>
                                 <p>Zona Polígono</p>
                             </div>
-                            <img src="./recursos/ultrasonidoPoligonoLogo.png" alt="Logo Polígono" loading="lazy"
+                            <img src="./recursos/ultrasonidoPoligonoLogo.webp" alt="Logo Polígono" loading="lazy"
                                 class="card-location-logo poligono-logo">
                         </div>
                     </div>
@@ -1421,6 +1428,7 @@
 
                         <div class="location-map">
                             <iframe
+                                title="Mapa de ubicación de Ultrasonido Polígono"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9927683287415!2d-89.5716259!3d20.992926999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56717ab3968b53%3A0x745d44c50e5a1ce7!2sUltrasonido%20Pol%C3%ADgono!5e0!3m2!1sen!2smx!4v1766274558476!5m2!1sen!2smx"
                                 width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1605,7 +1613,7 @@
     <script src="security.js" defer></script>
 
     <!-- Custom JS -->
-    <script src="script.js?v=8.4" defer></script>
+    <script src="script.js?v=9.1" defer></script>
 </body>
 
 </html>

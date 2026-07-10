@@ -95,12 +95,18 @@ window.addEventListener('resize', () => {
     });
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scroll for anchor links (same-page only; cross-page "pagina.html#seccion" links navigate normally)
+document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        const hrefPage = href.slice(0, hashIndex);
+        const currentPage = location.pathname.split('/').pop() || 'index.html';
+        if (hrefPage && hrefPage !== currentPage) return;
+
+        const target = document.getElementById(href.slice(hashIndex + 1));
         if (target) {
+            e.preventDefault();
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;

@@ -8,9 +8,12 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Forzar HTTPS en todas las visitas futuras
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
     # Prevenir Clickjacking
     X-Frame-Options = "SAMEORIGIN"
-    
+
     # Prevenir MIME type sniffing
     X-Content-Type-Options = "nosniff"
     
@@ -21,7 +24,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     
     # Content Security Policy
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn-uicons.flaticon.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn-uicons.flaticon.com; img-src 'self' data: https: blob:; frame-src 'self' https://www.google.com https://maps.google.com; connect-src 'self' https://wa.me https://api.whatsapp.com; base-uri 'self'; form-action 'self' https://wa.me; frame-ancestors 'self'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; frame-src 'self' https://www.google.com https://maps.google.com; connect-src 'self' https://wa.me https://api.whatsapp.com; base-uri 'self'; form-action 'self' https://wa.me; frame-ancestors 'self'; upgrade-insecure-requests;"
     
     # Permissions Policy
     Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
@@ -59,24 +62,24 @@
 # Redirects de seguridad
 [[redirects]]
   from = "/.env"
-  to = "/404"
+  to = "/404.html"
   status = 404
   force = true
 
 [[redirects]]
   from = "/.git/*"
-  to = "/404"
+  to = "/404.html"
   status = 404
   force = true
 
 [[redirects]]
   from = "/*.sql"
-  to = "/404"
+  to = "/404.html"
   status = 404
   force = true
 
 [[redirects]]
   from = "/*.bak"
-  to = "/404"
+  to = "/404.html"
   status = 404
   force = true
