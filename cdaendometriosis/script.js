@@ -31,8 +31,9 @@ if (header) {
 const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
     question.setAttribute('aria-expanded', 'false'); // Init
-    
+
     question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
@@ -40,16 +41,26 @@ faqItems.forEach(item => {
         faqItems.forEach(otherItem => {
             otherItem.classList.remove('active');
             const otherQuestion = otherItem.querySelector('.faq-question');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
             if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+            if (otherAnswer) otherAnswer.style.maxHeight = '';
         });
 
         // Toggle current item
         if (!isActive) {
             item.classList.add('active');
             question.setAttribute('aria-expanded', 'true');
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
         } else {
             question.setAttribute('aria-expanded', 'false');
         }
+    });
+});
+
+// Recompute open FAQ height on resize/orientation change so answers never clip
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
     });
 });
 
