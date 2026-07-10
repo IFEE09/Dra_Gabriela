@@ -29,38 +29,51 @@ if (header) {
 
 // FAQ Accordion
 const faqItems = document.querySelectorAll('.faq-item');
+
+function closeFaqItem(item) {
+    const answer = item.querySelector('.faq-answer');
+    const question = item.querySelector('.faq-question');
+    item.classList.remove('active');
+    if (question) question.setAttribute('aria-expanded', 'false');
+    if (answer) answer.style.maxHeight = '0px';
+}
+
+function openFaqItem(item) {
+    const answer = item.querySelector('.faq-answer');
+    const question = item.querySelector('.faq-question');
+    item.classList.add('active');
+    if (question) question.setAttribute('aria-expanded', 'true');
+    if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+}
+
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
-    question.setAttribute('aria-expanded', 'false'); // Init
+    if (!question) return;
+
+    question.setAttribute('aria-expanded', 'false');
+    if (answer) answer.style.maxHeight = '0px';
 
     question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Close all other items
         faqItems.forEach(otherItem => {
-            otherItem.classList.remove('active');
-            const otherQuestion = otherItem.querySelector('.faq-question');
-            const otherAnswer = otherItem.querySelector('.faq-answer');
-            if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
-            if (otherAnswer) otherAnswer.style.maxHeight = '';
+            if (otherItem !== item) closeFaqItem(otherItem);
         });
 
-        // Toggle current item
         if (!isActive) {
-            item.classList.add('active');
-            question.setAttribute('aria-expanded', 'true');
-            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+            openFaqItem(item);
         } else {
-            question.setAttribute('aria-expanded', 'false');
+            closeFaqItem(item);
         }
     });
 });
 
-// Recompute open FAQ height on resize/orientation change so answers never clip
 window.addEventListener('resize', () => {
-    document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+    faqItems.forEach(item => {
+        if (!item.classList.contains('active')) return;
+        const answer = item.querySelector('.faq-answer');
+        if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
     });
 });
 
@@ -563,3 +576,55 @@ if (heroSlider) {
     goToSlide(0);
     startAutoplay();
 }
+
+// Persist scroll position across reloads (per page)
+(function persistScrollPosition() {
+    const storageKey = `scrollPos:${location.pathname}`;
+    let saveTimer = null;
+
+    const saveScroll = () => {
+        try {
+            localStorage.setItem(storageKey, String(window.scrollY || window.pageYOffset || 0));
+        } catch (_) {
+            // Ignore quota / private mode errors
+        }
+    };
+
+    const restoreScroll = () => {
+        if (location.hash) return;
+
+        let saved = null;
+        try {
+            saved = localStorage.getItem(storageKey);
+        } catch (_) {
+            return;
+        }
+
+        if (saved === null) return;
+
+        const y = Number(saved);
+        if (!Number.isFinite(y) || y <= 0) return;
+
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        requestAnimationFrame(() => {
+            window.scrollTo(0, y);
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(saveScroll, 150);
+    }, { passive: true });
+
+    window.addEventListener('beforeunload', saveScroll);
+    window.addEventListener('pagehide', saveScroll);
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', restoreScroll);
+    } else {
+        restoreScroll();
+    }
+})();
